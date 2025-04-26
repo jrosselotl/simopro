@@ -3,62 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIMOpro</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <title>SIMOpro - Soluciones de Climatización e Inmersión</title>
   <link rel="stylesheet" href="css/styles.css">
-  <div id="header-placeholder"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
 </head>
+
 <body class="bg-white text-black">
 
-  <div id="header"></div>
+  <!-- HEADER (se carga dinámicamente) -->
+  <div id="header-placeholder"></div>
 
-  <main class="container">
-    <section id="home" class="text-center p-10">
-      <h2 class="text-4xl font-bold mb-4">Bienvenido a SIMOpro</h2>
-      <p class="text-lg">Simulaciones térmicas y de flujo para sistemas de inmersión líquida.</p>
-    </section>
+  <!-- HERO PRINCIPAL -->
+  <section id="home" class="container text-center pt-28 pb-16">
+    <h1 class="text-5xl font-bold font-poppins mb-4">Bienvenido a SIMOpro</h1>
+    <p class="text-lg text-gray-700">Especialistas en soluciones térmicas y de flujo para sistemas de climatización e inmersión líquida.</p>
+  </section>
 
-    <!-- Aquí irán Simulaciones, Servicios, etc. -->
-    <section id="services-card" class="">
-        <h1>Servicios</h1>
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
-            <img src="static/images/DC_cooling.png" class="w-full h-48 object-cover">
-            <div class="p-4">
-              <h3 class="text-xl font-bold mb-2"></h3>
-              <p class="text-gray-600 mb-4">Descripción breve del servicio ofrecido.</p>
-              <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ver Servicio</a>
-            </div>
-          </div>
-    </section>
-  </main>
+  <!-- SECCIÓN SERVICIOS -->
+  <section id="services" class="container py-16">
+    <h2 class="text-4xl font-bold text-center mb-12">Nuestros Servicios</h2>
 
-  <div id="footer"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Servicio 1 -->
+      <div class="card">
+        <img src="images/carousel1.jpg" alt="Climatización HVAC" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Sistemas HVAC y Enfriadores Secos</h3>
+          <p class="text-gray-600 mb-4">Diseño e instalación de sistemas de climatización HVAC, enfriadores secos y unidades CRAH de alta eficiencia.</p>
+          <a href="#servicio1" class="btn-primary">Ver Servicio</a>
+        </div>
+      </div>
 
+      <!-- Servicio 2 -->
+      <div class="card">
+        <img src="images/carousel2.jpg" alt="Inmersión de una fase" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2">Refrigeración por Inmersión de Una Fase</h3>
+          <p class="text-gray-600 mb-4">Soluciones de enfriamiento líquido para servidores de alta densidad con tecnología de una fase.</p>
+          <a href="#servicio2" class="btn-primary">Ver Servicio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contact" class="container py-16 text-center">
+    <h2 class="text-4xl font-bold mb-8">Contáctanos</h2>
+    <p class="text-gray-700 mb-4">¿Tienes un proyecto o necesitas asesoría? Estamos aquí para ayudarte.</p>
+    <a href="mailto:contacto@simopro.com" class="btn-primary">Enviar Correo</a>
+  </section>
+
+  <!-- FOOTER (se carga dinámicamente) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Script para cargar Header y Footer -->
   <script>
-    // Carga dinámica del header y footer
-    async function loadPartial(id, file) {
-      const res = await fetch(file);
-      const text = await res.text();
-      document.getElementById(id).innerHTML = text;
-    }
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
 
-    loadPartial('header', 'header.html');
-    loadPartial('footer', 'footer.html');
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
   </script>
-</body>
-  <script>
-  fetch('header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('header-placeholder').innerHTML = data;
-    });
 
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    });
-</script>
+</body>
 </html>
 
