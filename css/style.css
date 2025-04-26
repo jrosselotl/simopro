@@ -1,0 +1,424 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* Navegación */
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.5rem 1rem;
+}
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+.menu {
+  list-style: none;
+  display: none;
+  /* Mobile: hidden by default, will show on toggle */
+}
+.menu li {
+  margin: 0;
+}
+.menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+}
+.menu li a:hover {
+  background: #f0f0f0;
+}
+.menu li.contact a {
+  /* Estilo destacado para Contacto en menú */
+  background: #0066cc;
+  color: #fff;
+  border-radius: 4px;
+}
+.menu li.contact a:hover {
+  background: #005bb5;
+}
+.menu li.lang-switch a {
+  padding: 0.5rem;
+}
+
+/* Mostrar menú en móvil al hacer toggle */
+nav.open .menu {
+  display: block;
+  width: 100%;
+}
+nav.open .menu li {
+  /* vertical list */
+  margin: 0.5rem 0;
+}
+nav.open .menu-toggle {
+  /* keep toggle visible in open state, aligned to right */
+  align-self: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* Menú en escritorio (ancho >= 768px) */
+@media (min-width: 768px) {
+  nav {
+    justify-content: space-between;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .menu {
+    display: flex !important;
+    gap: 1rem;
+  }
+  .menu li {
+    margin: 0;
+  }
+  .menu li.lang-switch {
+    /* mantener idiomas en la misma línea */
+    align-self: center;
+  }
+}
+
+/* Sección Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #f9fafc;
+}
+.hero-content {
+  flex: 1;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-content .button {
+  font-size: 1rem;
+  text-decoration: none;
+  background: #0066cc;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+}
+.hero-content .button:hover {
+  background: #005bb5;
+}
+.hero-image {
+  flex: 1;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Sección Benefits/Por qué */
+.benefits {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.benefits h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.benefit-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.benefit-item {
+  flex: 1 1 30%;
+  min-width: 200px;
+  text-align: center;
+  padding: 1rem;
+}
+.benefit-item .benefit-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+.benefit-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.benefit-item p {
+  font-size: 0.95rem;
+}
+@media (max-width: 767px) {
+  .benefit-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .benefit-item {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* Sección Expertise/Areas */
+.expertise {
+  padding: 2rem 1rem;
+}
+.expertise h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.expertise-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.expertise-item .expertise-text {
+  flex: 1;
+  padding: 1rem;
+}
+.expertise-item .expertise-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.expertise-item .expertise-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.expertise-item .expertise-image {
+  flex: 1;
+  text-align: center;
+}
+.expertise-item .expertise-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+.expertise-item.reverse {
+  flex-direction: row-reverse;
+}
+@media (max-width: 767px) {
+  .expertise-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .expertise-item.reverse {
+    flex-direction: column;
+  }
+  .expertise-item .expertise-text {
+    padding: 0.5rem;
+  }
+}
+
+/* Sección Testimonial */
+.testimonial {
+  padding: 2rem 1.5rem;
+  background: #f0f8ff;
+  text-align: center;
+}
+.testimonial .quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.testimonial .author {
+  font-size: 0.95rem;
+  color: #555;
+}
+.author-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* Sección CTA */
+.cta {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: #0066cc;
+  color: #fff;
+}
+.cta h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.cta p {
+  margin-bottom: 1rem;
+}
+.cta .button {
+  background: #fff;
+  color: #0066cc;
+  font-weight: bold;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.cta .button:hover {
+  background: #e6e6e6;
+}
+
+/* Page headers for subpages */
+.page-header {
+  background: #f9fafc;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+.page-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.page-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Servicios page sections */
+.service {
+  padding: 1.5rem 1rem;
+}
+.service h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.service .icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.service p {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.service ul {
+  list-style: disc inside;
+  margin-bottom: 1.5rem;
+}
+.service ul li {
+  margin: 0.25rem 0 0.25rem 1rem;
+}
+
+/* About/ Nosotros page */
+.company-info {
+  padding: 1.5rem 1rem;
+  line-height: 1.6;
+}
+.company-info p {
+  margin-bottom: 1rem;
+}
+.team {
+  padding: 1.5rem 1rem;
+}
+.team-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.team-member {
+  text-align: center;
+  flex: 1 1 200px;
+}
+.team-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+}
+.team-member h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+.team-member p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Contact page */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.5rem 1rem;
+}
+.contact-form, .contact-details {
+  flex: 1 1 300px;
+}
+.contact-form h2, .contact-details h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.field {
+  margin-bottom: 1rem;
+}
+.field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+.field input, .field textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.field textarea {
+  min-height: 100px;
+}
+.contact-form .button {
+  margin-top: 0.5rem;
+}
+.contact-details p {
+  margin-bottom: 0.5rem;
+}
+.contact-details p strong {
+  font-weight: bold;
+}
+@media (max-width: 600px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}
+
+/* Pie de página */
+footer {
+  background: #f9fafc;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+footer p {
+  margin: 0.2rem;
+}
+
+/* Ajuste especial para el header fijo */
+body {
+    padding-top: 70px; /* Deja espacio para el header fijo */
+}
+
+.navbar.shadow {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
