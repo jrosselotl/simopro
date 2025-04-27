@@ -1,1 +1,15 @@
-^*
+// Guardar en servidor
+fetch('api/saveSlides.php', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(slides)
+})
+.then(response => response.text())
+.then(data => {
+  console.log('Slides guardados en servidor:', data);
+})
+.catch(error => {
+  console.error('Error guardando slides en servidor:', error);
+});
