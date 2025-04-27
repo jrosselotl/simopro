@@ -14,7 +14,18 @@ body {
 .btn-primary {
   @apply bg-blue-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition;
 }
+.btn-primary {
+  background-color: #3B82F6; /* bg-blue-500 */
+  color: white;
+  font-weight: 600; /* font-semibold */
+  padding: 0.5rem 1.5rem; /* py-2 px-6 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 0.3s ease;
+}
 
+.btn-primary:hover {
+  background-color: #2563EB; /* hover:bg-blue-600 */
+}
 /* Tarjetas */
 .card {
   @apply bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl;
