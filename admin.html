@@ -1,1 +1,47 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - SIMOpro</title>
+
+  <!-- Tailwind para que sea bonito -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center py-10">
+
+  <h1 class="text-3xl font-bold mb-8">Administrador de Sliders - SIMOpro</h1>
+
+  <div id="sliderForm" class="bg-white p-6 rounded shadow-md w-full max-w-md">
+    <div class="mb-4">
+      <label class="block font-bold mb-2">Título:</label>
+      <input type="text" id="titleInput" class="w-full p-2 border rounded" placeholder="Escribe el título">
+    </div>
+
+    <div class="mb-4">
+      <label class="block font-bold mb-2">Subtítulo:</label>
+      <input type="text" id="subtitleInput" class="w-full p-2 border rounded" placeholder="Escribe el subtítulo">
+    </div>
+
+    <div class="mb-4">
+      <label class="block font-bold mb-2">URL de Imagen:</label>
+      <input type="text" id="imageInput" class="w-full p-2 border rounded" placeholder="Pega el enlace de la imagen">
+    </div>
+
+    <button onclick="addSlide()" class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600">Añadir Slide</button>
+  </div>
+
+  <div id="slidesPreview" class="mt-10 w-full max-w-2xl">
+    <h2 class="text-2xl font-bold mb-4">Vista previa:</h2>
+    <div id="slidesList" class="space-y-4"></div>
+  </div>
+
+  <button onclick="saveSlides()" class="mt-8 bg-green-500 text-white py-2 px-8 rounded hover:bg-green-600">
+    Guardar Cambios
+  </button>
+
+  <script src="js/admin.js"></script>
+
+</body>
+</html>
