@@ -2,12 +2,12 @@
 
 /* Fuente por defecto: Inter para todo el cuerpo */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif !important;
 }
 
 /* Fuente Poppins SOLO para el logo */
 .font-poppins {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 /* Botones personalizados */
