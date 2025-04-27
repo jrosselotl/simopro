@@ -11,7 +11,10 @@
   <!-- Tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
+  <!-- Estilos propios adicionales -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 
 
 <body class="bg-white text-black">
@@ -19,6 +22,33 @@
   <!-- HEADER (se carga dinámicamente) -->
   <div id="header-placeholder"></div>
 
+   <!-- Carousel (se carga dinámicamente) -->
+<section id="carousel" class="mt-24">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide flex items-center justify-center bg-cover bg-center" style="background-image: url('images/tuimagen1.jpg')">
+        <div class="text-center text-white">
+          <h2 class="text-4xl font-bold mb-4">Título Personalizable</h2>
+          <p class="text-lg">Subtítulo editable o llamado a la acción.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide flex items-center justify-end bg-cover bg-center" style="background-image: url('images/tuimagen2.jpg')">
+        <div class="text-right text-white">
+          <h2 class="text-4xl font-bold mb-4">Otro Título</h2>
+          <p class="text-lg">Otro texto o botón aquí.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
   <!-- HERO PRINCIPAL -->
   <section id="home" class="container text-center pt-28 pb-16">
     <h1 class="text-5xl font-bold font-poppins mb-4">Bienvenido a SIMOpro</h1>
