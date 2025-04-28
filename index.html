@@ -2,124 +2,134 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIMOpro - Soluciones de Climatización e Inmersión</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIMOpro - Especialistas en Refrigeración y Simulación</title>
 
-  <!-- TailwindCSS CDN -->
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
-  <!-- Estilos propios adicionales -->
+  <!-- Animate.css para animaciones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Tu propio CSS -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-
-
-
 </head>
 
+<body class="bg-gray-50 text-gray-800">
 
+  <!-- HEADER -->
+  <header class="w-full p-4 bg-blue-700 text-white text-center font-bold text-xl sticky top-0 z-50">
+    SIMOpro - Soluciones en Refrigeración y Simulación Térmica
+  </header>
 
-<body class="bg-white text-black">
-  <div class="container mx-auto px-4">
-  <!-- HEADER (se carga dinámicamente) -->
-  <div id="header-placeholder"></div>
+  <!-- HERO / SLIDER -->
+  <section class="swiper mySwiper h-screen">
+    <div id="swiper-wrapper" class="swiper-wrapper"></div>
 
-   <!-- Carousel (se carga dinámicamente) -->
-<section class="swiper mySwiper">
-  <div id="swiper-wrapper" class="swiper-wrapper"></div>
-
-  <!-- Opcionales: paginación y flechas -->
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</section>
-
-  <!-- HERO PRINCIPAL -->
-  <section id="home" class="container text-center pt-28 pb-16">
-    <h1 class="text-5xl font-bold font-poppins mb-4">Bienvenido a SIMOpro</h1>
-    <p class="text-lg text-gray-700">Especialistas en soluciones térmicas y de flujo para sistemas de climatización e inmersión líquida.</p>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </section>
 
-  <!-- SECCIÓN SERVICIOS -->
-  <section id="services" class="container py-16">
-    <h2 class="text-4xl font-bold text-center mb-12">Nuestros Servicios</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <!-- Servicio 1 -->
-      <div class="card">
-        <img src="images/DC_cooling.png" alt="Climatización HVAC" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold mb-2">Sistemas HVAC y Enfriadores Secos</h3>
-          <p class="text-gray-600 mb-4">Diseño e instalación de sistemas de climatización HVAC, enfriadores secos y unidades CRAH de alta eficiencia.</p>
-          <a href="#servicio1" class="btn-primary">Ver Servicio</a>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Nuestros Servicios</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-blue-100 p-6 rounded-lg hover:scale-105 transform transition">
+          <h3 class="text-2xl font-bold mb-4">Climatización de Data Centers</h3>
+          <p class="mb-4">Diseño e instalación de sistemas HVAC y Dry Coolers optimizados para entornos críticos.</p>
+          <a href="#contacto" class="btn-primary">Ver Servicio</a>
         </div>
-      </div>
-
-      <!-- Servicio 2 -->
-      <div class="card">
-        <img src="images/Inm_one_phase.png" alt="Inmersión de una fase" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold mb-2">Refrigeración por Inmersión de Una Fase</h3>
-          <p class="text-gray-600 mb-4">Soluciones de enfriamiento líquido para servidores de alta densidad con tecnología de una fase.</p>
-          <a href="#servicio2" class="btn-primary">Ver Servicio</a>
+        <div class="bg-blue-100 p-6 rounded-lg hover:scale-105 transform transition">
+          <h3 class="text-2xl font-bold mb-4">Inmersión Líquida 1 Fase</h3>
+          <p class="mb-4">Implementación de tecnologías de enfriamiento líquido para maximizar la eficiencia.</p>
+          <a href="#contacto" class="btn-primary">Ver Servicio</a>
+        </div>
+        <div class="bg-blue-100 p-6 rounded-lg hover:scale-105 transform transition">
+          <h3 class="text-2xl font-bold mb-4">Simulaciones Térmicas</h3>
+          <p class="mb-4">Modelamiento CFD para optimizar la circulación de aire y disipación de calor en instalaciones.</p>
+          <a href="#contacto" class="btn-primary">Ver Servicio</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN CONTACTO -->
-  <section id="contact" class="container py-16 text-center">
-    <h2 class="text-4xl font-bold mb-8">Contáctanos</h2>
-    <p class="text-gray-700 mb-4">¿Tienes un proyecto o necesitas asesoría? Estamos aquí para ayudarte.</p>
-    <a href="mailto:contacto@simopro.com" class="btn-primary">Enviar Correo</a>
+  <!-- ¿POR QUÉ ELEGIRNOS? -->
+  <section id="porque-elegirnos" class="py-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">¿Por qué elegir SIMOpro?</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-4">Expertise Técnico</h3>
+          <p>Más de 10 años en el sector de refrigeración industrial y simulación avanzada.</p>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-4">Innovación Constante</h3>
+          <p>Adoptamos las últimas tecnologías de inmersión y optimización energética.</p>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-4">Compromiso Real</h3>
+          <p>Nos enfocamos en la excelencia y la satisfacción completa de nuestros clientes.</p>
+        </div>
+      </div>
+    </div>
   </section>
-</div>
-  <!-- FOOTER (se carga dinámicamente) -->
-  <div id="footer-placeholder"></div>
 
-  <!-- Script para cargar Header y Footer -->
-  <script>
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
+  <!-- PROYECTOS REALIZADOS -->
+  <section id="proyectos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Proyectos Realizados</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <img src="images/proyecto1.jpg" alt="Proyecto 1" class="rounded-lg shadow-md">
+        <img src="images/proyecto2.jpg" alt="Proyecto 2" class="rounded-lg shadow-md">
+        <img src="images/proyecto3.jpg" alt="Proyecto 3" class="rounded-lg shadow-md">
+        <img src="images/proyecto4.jpg" alt="Proyecto 4" class="rounded-lg shadow-md">
+      </div>
+    </div>
+  </section>
 
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
-  </script>
-<!-- SwiperJS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="py-20 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Lo que dicen nuestros clientes</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="italic">"SIMOpro implementó nuestra refrigeración líquida con resultados excepcionales. Profesionalismo total."</p>
+          <p class="mt-4 font-bold">– Empresa XYZ Data Center</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="italic">"Gracias a sus simulaciones térmicas optimizamos nuestro consumo energético en un 30%."</p>
+          <p class="mt-4 font-bold">– Cliente ABC Tech</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  const swiper = new Swiper('.swiper', {
-    loop: true,
-    autoplay: {
-      delay: 5000,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    effect: 'fade', // También puedes probar 'slide' o 'cube'
-    speed: 800,
-  });
-</script>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-blue-700 text-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-8">Contáctanos</h2>
+      <form class="space-y-6">
+        <input type="text" placeholder="Nombre" class="w-full p-3 rounded text-black">
+        <input type="email" placeholder="Correo" class="w-full p-3 rounded text-black">
+        <textarea placeholder="Mensaje" class="w-full p-3 rounded text-black"></textarea>
+        <button type="submit" class="btn-primary">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section>
 
-<!-- Cargar tus slides dinámicos -->
-<script src="js/loadSlides.js"></script>
+  <!-- FOOTER -->
+  <footer class="w-full p-6 bg-blue-800 text-white text-center mt-10">
+    © 2025 SIMOpro. Todos los derechos reservados.
+  </footer>
+
+  <!-- SwiperJS + cargar Slides -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="js/loadSlides.js"></script>
+
 </body>
 </html>
-
