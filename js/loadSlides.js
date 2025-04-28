@@ -1,4 +1,4 @@
-// js/loadSlides.js
+// loadSlides.js
 
 document.addEventListener('DOMContentLoaded', function () {
   const swiperWrapper = document.getElementById('swiper-wrapper');
@@ -6,16 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   slides.forEach(slide => {
     const slideDiv = document.createElement('div');
-    slideDiv.className = 'swiper-slide animate__animated ' + (slide.animation || 'fade-in');
+    slideDiv.className = 'swiper-slide relative flex items-center justify-center text-white ' + slide.animation;
 
     slideDiv.innerHTML = `
-      <div class="relative h-[400px] bg-cover bg-center flex ${slide.position} items-center p-8 text-white"
-           style="background-image: url('${slide.image}')">
-        <div class="absolute inset-0" style="background-color: ${slide.overlayColor}; opacity: ${slide.overlayOpacity};"></div>
-        <div class="relative z-10" style="color: ${slide.textColor};">
-          <h2 class="text-4xl font-bold">${slide.title}</h2>
-          <p class="text-lg mt-2">${slide.subtitle}</p>
-          ${slide.button.text ? `<a href="${slide.button.link}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">${slide.button.text}</a>` : ''}
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('${slide.image}');"></div>
+      <div class="overlay" style="background-color: ${slide.overlayColor}; opacity: ${slide.overlayOpacity};"></div>
+      <div class="hero-content ${slide.position} px-8 text-${slide.textColor}">
+        <div class="max-w-3xl">
+          <h2 class="text-5xl font-bold mb-4">${slide.title}</h2>
+          <p class="text-xl">${slide.subtitle}</p>
         </div>
       </div>
     `;
