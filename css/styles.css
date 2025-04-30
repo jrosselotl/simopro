@@ -81,6 +81,13 @@ input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
   text-align: center; /* o left, o right según el slide */
   padding: 2rem;
 }
+.z-10{
+  z-index:10;
+}
+.z-20{
+  z-index:20;
+}
+
 
 /* Ajustes generales para textos de hero */
 .hero-content {
