@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slideDiv.innerHTML = `
       <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('${slide.image}');"></div>
       <div class="overlay" style="background-color: ${slide.overlayColor}; opacity: ${slide.overlayOpacity};"></div>
-<div class="overlay top-0 left-0 w-full h-full z-10" style="background-color: rgba(0,0,0, [opacidad]);"></div>
+<div class="overlay absolute top-0 left-0 w-full h-full z-10" style="background-color: rgba(0,0,0, [opacidad]);"></div>
       <div class="hero-content ${slide.position} px-8 text-${slide.textColor}">
         <div class="max-w-3xl">
           <h2 class="text-5xl font-bold mb-4 z-20">${slide.title}</h2>
