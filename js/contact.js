@@ -1,10 +1,13 @@
 // js/contact.js
 
-// Simula validación y preparación del envío de formulario
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contact-form");
   const response = document.getElementById("form-response");
+
+  if (!form || !response) {
+    console.warn("Formulario o respuesta no encontrados en esta página.");
+    return;
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -15,10 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     requiredFields.forEach((id) => {
       const field = document.getElementById(id);
-      if (!field.value.trim()) {
+      if (field && !field.value.trim()) {
         field.classList.add("border-red-500");
         valid = false;
-      } else {
+      } else if (field) {
         field.classList.remove("border-red-500");
       }
     });
@@ -29,11 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Simula éxito (luego se reemplaza con integración Outlook/SMTP)
+    // Simula éxito (luego se reemplaza con integración real)
     response.textContent = "Mensaje enviado correctamente. Pronto te contactaremos.";
     response.className = "text-green-600 mt-2";
 
-    // Reset del formulario simulado
+    // Resetea el formulario
     form.reset();
   });
 });
