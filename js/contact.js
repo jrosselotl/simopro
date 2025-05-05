@@ -40,3 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
     form.reset();
   });
 });
+// Cargar servicios padre e hijo en el <select>
+const servicioSelect = document.getElementById("servicio");
+const serviciosGuardados = JSON.parse(localStorage.getItem("servicios"));
+
+if (servicioSelect && serviciosGuardados) {
+  Object.entries(serviciosGuardados).forEach(([padre, hijos]) => {
+    const group = document.createElement("optgroup");
+    group.label = padre;
+
+    hijos.forEach(hijo => {
+      const option = document.createElement("option");
+      option.value = `${padre} - ${hijo}`;
+      option.textContent = hijo;
+      group.appendChild(option);
+    });
+
+    servicioSelect.appendChild(group);
+  });
+}
