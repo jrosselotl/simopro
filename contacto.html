@@ -27,8 +27,12 @@
         <input type="text" name="compania" placeholder="Compañía (opcional)" class="input">
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" name="servicio" placeholder="Servicio que busca*" class="input">
-        <input type="text" name="especial" placeholder="Minería o especialidad (opcional)" class="input">
+        <label for="servicio" class="block mb-2 font-semibold">Servicio</label>
+<select id="servicio" name="servicio" class="w-full border rounded px-2 py-1">
+  <option value="">Selecciona un servicio</option>
+</select>
+
+        
       </div>
       <textarea name="motivo" rows="3" placeholder="Motivo*" class="input"></textarea>
       <textarea name="mensaje" rows="5" placeholder="Mensaje*" class="input"></textarea>
