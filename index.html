@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <!-- CSS personalizado -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body class="bg-black text-white">
@@ -24,93 +24,161 @@
   <div id="header-container"></div>
 
   <!-- HERO / SLIDER -->
-<section class="swiper mySwiper h-screen">
-  <div class="swiper-wrapper">
+  <section class="swiper mySwiper h-screen">
+    <div class="swiper-wrapper">
 
-    <div class="swiper-slide relative">
-      <img src="images/slider-datacenter.jpg" alt="Data Center" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ingeniería en Data Centers</h2>
-        <p class="text-gray-300 text-lg max-w-2xl">Soluciones HVAC, inmersión líquida y simulación CFD para entornos críticos.</p>
+      <!-- SIMOcore -->
+      <div class="swiper-slide relative">
+        <img src="images/slider-simocore.jpg" alt="SIMOcore" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">SIMOcore® – Gemelos Digitales para la Toma de Decisiones</h2>
+          <p class="text-gray-300 text-lg max-w-2xl">Modelamos escenarios operativos reales con simulación avanzada para anticipar fallos y optimizar resultados.</p>
+        </div>
       </div>
+
+      <!-- División: Data Center -->
+      <div class="swiper-slide relative">
+        <img src="images/slider-datacenter.jpg" alt="Data Center" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ingeniería en Data Centers</h2>
+          <p class="text-gray-300 text-lg max-w-2xl">CFD, simulación térmica e inmersión líquida para reducir riesgo y aumentar eficiencia.</p>
+        </div>
+      </div>
+
+      <!-- División: Minería -->
+      <div class="swiper-slide relative">
+        <img src="images/slider-mineria.jpg" alt="Minería Subterránea" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Minería Subterránea Inteligente</h2>
+          <p class="text-gray-300 text-lg max-w-2xl">Optimización operativa con modelos dinámicos de flotas, ventilación y producción.</p>
+        </div>
+      </div>
+
+      <!-- División: Tunelería -->
+      <div class="swiper-slide relative">
+        <img src="images/slider-tuneleria.jpg" alt="Tunelería" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Tunelería sin Sorpresas</h2>
+          <p class="text-gray-300 text-lg max-w-2xl">Simulación de TBM, ventilación y sostenimiento para planificar cada metro del avance.</p>
+        </div>
+      </div>
+
+      <!-- División: Electricidad -->
+      <div class="swiper-slide relative">
+        <img src="images/slider-electricidad.jpg" alt="Electricidad" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Modelado Eléctrico Avanzado</h2>
+          <p class="text-gray-300 text-lg max-w-2xl">Redes inteligentes, análisis térmico, armónicos y cortocircuitos en alta precisión.</p>
+        </div>
+      </div>
+
     </div>
 
-    <div class="swiper-slide relative">
-      <img src="images/slider-mineria.jpg" alt="Minería Subterránea" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Optimización en Minería Subterránea</h2>
-        <p class="text-gray-300 text-lg max-w-2xl">Modelado geomecánico, tronadura, ventilación y eficiencia operativa.</p>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </section>
+
+  <!-- ¿Qué es SIMOcore®? -->
+  <section class="py-20 bg-black text-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-4xl font-bold mb-6">¿Qué es SIMOcore®?</h2>
+        <p class="text-gray-300 mb-4">SIMOcore® es un enfoque de ingeniería que construye gemelos digitales multivariables para simular el comportamiento real de sistemas operativos en minería, data centers, electricidad y tunelería.</p>
+        <p class="text-gray-300 mb-4">A diferencia de los estudios tradicionales, permite evaluar múltiples escenarios “qué pasaría si”, optimizar decisiones de diseño y operación, y reducir costos asociados a fallos y rediseños.</p>
+        <p class="text-gray-300">Aplicamos herramientas como CFD, FEM, DEM, COMSOL y MATLAB en un entorno dinámico, ajustado a datos reales y listo para iterar soluciones eficientes.</p>
+      </div>
+      <div>
+        <img src="images/simocore-info.jpg" alt="¿Qué es SIMOcore?" class="rounded-lg w-full object-cover">
       </div>
     </div>
+  </section>
 
-    <div class="swiper-slide relative">
-      <img src="images/slider-tuneleria.jpg" alt="Tunelería" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center px-4">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ingeniería de Tunelería</h2>
-        <p class="text-gray-300 text-lg max-w-2xl">Diseño y monitoreo de túneles, ventilación, y análisis estructural.</p>
+  <!-- Divisiones -->
+  <section id="divisiones" class="py-20 bg-black text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Divisiones</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- Data Center -->
+        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-datacenter.jpg')">
+          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Data Center</h3>
+            <ul class="list-disc list-inside text-gray-300 space-y-1">
+              <li>CFD para racks y pasillos</li>
+              <li>Enfriamiento líquido por inmersión</li>
+              <li>Fallos térmicos y análisis PUE</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Minería -->
+        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-mineria.jpg')">
+          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Minería Subterránea</h3>
+            <ul class="list-disc list-inside text-gray-300 space-y-1">
+              <li>Tronadura, polvo y ventilación</li>
+              <li>Fracturamiento DEM/FEM</li>
+              <li>Evaluación térmica en frentes</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tunelería -->
+        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-tuneleria.jpg')">
+          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Tunelería</h3>
+            <ul class="list-disc list-inside text-gray-300 space-y-1">
+              <li>Simulación de TBM y sostenimiento</li>
+              <li>Incendios, evacuación y gases</li>
+              <li>Interacción túnel-terreno</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Electricidad -->
+        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-electricidad.jpg')">
+          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Electricidad</h3>
+            <ul class="list-disc list-inside text-gray-300 space-y-1">
+              <li>Simulación térmica de tableros</li>
+              <li>Análisis de fallos y cortocircuitos</li>
+              <li>Redes inteligentes y armonización</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</section>
-
-  <!-- SERVICIOS -->
- <section id="divisiones" class="py-20 bg-black text-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">Nuestras Divisiones</h2>
-
-    <div class="grid md:grid-cols-2 gap-10">
-      <!-- Data Center -->
-      <div class="bg-gray-800 p-6 rounded-lg">
-        <h3 class="text-2xl font-bold mb-4">Data Center</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-1">
-          <li>Climatización HVAC y Dry Coolers</li>
-          <li>Inmersión Líquida (1 y 2 fases)</li>
-          <li>Simulación CFD y control térmico</li>
-        </ul>
-      </div>
-
-      <!-- Minería Subterránea -->
-      <div class="bg-gray-800 p-6 rounded-lg">
-        <h3 class="text-2xl font-bold mb-4">Minería Subterránea</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-1">
-          <li>Optimización de tronadura</li>
-          <li>Ventilación y modelado de flujos</li>
-          <li>Planificación y simulación operativa</li>
-        </ul>
-      </div>
-
-      <!-- Tunelería -->
-      <div class="bg-gray-800 p-6 rounded-lg">
-        <h3 class="text-2xl font-bold mb-4">Tunelería</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-1">
-          <li>Diseño y simulación de túneles</li>
-          <li>Modelado con TBM</li>
-          <li>Estudios geotécnicos y ventilación</li>
-        </ul>
-      </div>
-
-      <!-- Electricidad y Telecomunicaciones -->
-      <div class="bg-gray-800 p-6 rounded-lg">
-        <h3 class="text-2xl font-bold mb-4">Electricidad</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-1">
-          <li>Comisionamiento de tableros eléctricos</li>
-          <li>Protecciones, EPMS y SCADA</li>
-        </ul>
+  <!-- Simulaciones -->
+  <section id="simulaciones" class="py-20 bg-black text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Simulaciones</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-900 p-4 rounded-lg">
+          <img src="images/sim-cfd.jpg" class="w-full h-40 object-cover mb-4 rounded" alt="CFD Simulación">
+          <h3 class="text-xl font-semibold mb-2">Distribución térmica en rack</h3>
+          <p class="text-gray-400 text-sm">Estudio de comportamiento térmico por carga real de servidores.</p>
+        </div>
+        <div class="bg-gray-900 p-4 rounded-lg">
+          <img src="images/sim-ventilacion.jpg" class="w-full h-40 object-cover mb-4 rounded" alt="Ventilación túneles">
+          <h3 class="text-xl font-semibold mb-2">Ventilación de túnel</h3>
+          <p class="text-gray-400 text-sm">Modelado CFD post-voladura con validación en terreno.</p>
+        </div>
+        <div class="bg-gray-900 p-4 rounded-lg">
+          <img src="images/sim-cortocircuito.jpg" class="w-full h-40 object-cover mb-4 rounded" alt="Simulación eléctrica">
+          <h3 class="text-xl font-semibold mb-2">Cortocircuito en tablero</h3>
+          <p class="text-gray-400 text-sm">Análisis térmico e interrupción de arco eléctrico.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Footer dinámico -->
   <div id="footer-container"></div>
 
-  <!-- JS dinámico -->
+  <!-- Carga de componentes comunes -->
   <script>
     fetch('header.html').then(res => res.text()).then(data => {
       document.getElementById('header-container').innerHTML = data;
@@ -125,7 +193,7 @@
   <script>
     const swiper = new Swiper('.mySwiper', {
       loop: true,
-      autoplay: { delay: 5000 },
+      autoplay: { delay: 6000 },
       pagination: { el: '.swiper-pagination', clickable: true },
       navigation: {
         nextEl: '.swiper-button-next',
