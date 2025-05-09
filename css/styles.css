@@ -1,7 +1,8 @@
 /* Estilos generales */
-
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #000;
+  color: #fff;
 }
 
 /* Botón Primario */
@@ -15,29 +16,41 @@ body {
   display: inline-block;
   text-align: center;
 }
-
 .btn-primary:hover {
-  background-color: #1d4ed8; /* Azul más oscuro al pasar mouse */
+  background-color: #1d4ed8;
   transform: scale(1.05);
 }
 
-/* Para las tarjetas de servicios */
-.service-card {
-  background-color: #e0f2fe; /* Azul clarito */
+/* Tarjetas (ahora para Divisiones) */
+.service-card, .division-card {
+  background-color: #1f2937; /* gris oscuro */
   border-radius: 0.75rem;
   padding: 1.5rem;
   transition: transform 0.3s ease;
 }
-
-.service-card:hover {
+.service-card:hover, .division-card:hover {
   transform: translateY(-5px) scale(1.03);
 }
 
-/* Para animaciones suaves */
+/* Listas */
+ul.list-disc li {
+  color: #d1d5db;
+  margin-bottom: 6px;
+}
+
+/* Enlaces */
+a {
+  color: #4ea1ff;
+  text-decoration: none;
+}
+a:hover {
+  color: #82cfff;
+}
+
+/* Animaciones */
 .fade-in {
   animation: fadeIn 1s ease forwards;
 }
-
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -46,63 +59,57 @@ body {
 /* Footer */
 footer {
   font-size: 0.9rem;
+  color: #d1d5db;
 }
 
 /* Inputs de formulario */
 input[type="text"], input[type="email"], textarea {
-  border: 1px solid #d1d5db; /* gris claro */
-  background-color: #f9fafb;
+  border: 1px solid #374151;
+  background-color: #111827;
+  color: white;
 }
-
 input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
   outline: none;
-  border-color: #2563eb; /* azul */
-  background-color: white;
+  border-color: #2563eb;
+  background-color: #1f2937;
 }
 
-/* Ajustes de sección Hero */
+/* Hero */
 .swiper {
   width: 100%;
   height: 100vh;
 }
-
-/* Ajustes de fondo overlay en slides */
 .overlay {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.3); /* Esto luego se sobreescribe dinámicamente */
+  background-color: rgba(0,0,0,0.4);
   z-index: 10;
 }
 .slide-content {
   position: relative;
   z-index: 20;
-  text-align: center; /* o left, o right según el slide */
+  text-align: center;
   padding: 2rem;
 }
-.z-10{
-  z-index:10;
-}
-.z-20{
-  z-index:20;
-}
-
-
-/* Ajustes generales para textos de hero */
 .hero-content {
   z-index: 10;
   position: relative;
 }
 
-/* Para que el Header sea sticky */
+/* Z-index utilitario */
+.z-10 { z-index:10; }
+.z-20 { z-index:20; }
+
+/* Sticky Header */
 header.sticky {
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-/* Responsive rápido */
+/* Responsive */
 @media (max-width: 768px) {
   .btn-primary {
     padding: 0.5rem 1rem;
