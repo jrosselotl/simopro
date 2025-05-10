@@ -1,18 +1,28 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   fetch("header.html")
     .then(res => res.text())
     .then(data => {
-      if (!document.querySelector("header")) {
+      // Evitar duplicados
+      const existingHeader = document.querySelector("header#main-header");
+      if (!existingHeader) {
         const temp = document.createElement("div");
         temp.innerHTML = data;
         document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
       }
 
-      // Manejo del scroll para cambiar color del header
-      document.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (header) {
+      // Asegurarse que el header esté en el DOM antes de hacer scroll
+      setTimeout(() => {
+        const header = document.querySelector("header#main-header");
+        if (!header) return;
+
+        // Agregar clase si ya bajó
+        if (window.scrollY > 50) {
+          header.classList.add("bg-black", "shadow-md");
+          header.classList.remove("bg-transparent");
+        }
+
+        // Escuchar scroll
+        window.addEventListener("scroll", () => {
           if (window.scrollY > 50) {
             header.classList.add("bg-black", "shadow-md");
             header.classList.remove("bg-transparent");
@@ -20,14 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
             header.classList.remove("bg-black", "shadow-md");
             header.classList.add("bg-transparent");
           }
-        }
-      });
-
-      // Forzar reevaluación de scroll inicial
-      setTimeout(() => {
-        window.scrollBy(0, 1);
-        window.scrollBy(0, -1);
-      }, 300);
+        });
+      }, 300); // espera a que el header esté insertado
     })
-    .catch(err => console.error("Error cargando header:", err));
+    .catch(error => console.error("Error al cargar el header:", error));
 });
