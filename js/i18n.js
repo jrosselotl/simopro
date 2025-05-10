@@ -1,4 +1,3 @@
-
 function updateFlag(lang) {
   const flagMap = {
     es: 'es.svg',
@@ -22,11 +21,12 @@ function setLanguage(lang) {
         }
       });
       localStorage.setItem('lang', lang);
-      updateFlag(lang); // <- aquí se actualiza la bandera
+      updateFlag(lang);
     });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const defaultLang = localStorage.getItem('lang') || 'es';
-  setLanguage(defaultLang);
+  setLanguage(defaultLang);        // Traducir la página
+  updateFlag(defaultLang);         // Mostrar bandera correspondiente
 });
