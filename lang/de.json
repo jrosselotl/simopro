@@ -1,4 +1,5 @@
 {
+  "titulo": "SIMOpro - Technik für den operativen Einsatz",
   "inicio": "Startseite",
   "divisiones": "Divisionen",
   "datacenter": "Rechenzentrum",
@@ -7,5 +8,12 @@
   "electricidad": "Elektrizität",
   "quienes_somos": "Über uns",
   "trabaja": "Karriere",
-  "contacto": "Kontakt"
+  "contacto": "Kontakt",
+  "simulaciones": "Simulationen",
+  "slide_simo_titulo": "SIMOcore® – Digitale Zwillinge für fundierte Entscheidungen",
+  "slide_simo_desc": "Wir modellieren reale Betriebsszenarien mit fortschrittlicher Simulation, um Fehler vorherzusehen und Ergebnisse zu optimieren.",
+  "simo_que_es": "Was ist SIMOcore®?",
+  "simo_p1": "SIMOcore® ist ein ingenieurtechnischer Ansatz, der digitale Zwillinge mit mehreren Variablen erstellt, um das reale Verhalten von Betriebssystemen in Bergbau, Rechenzentren, Elektrizität und Tunnelbau zu simulieren.",
+  "simo_p2": "Im Gegensatz zu traditionellen Studien ermöglicht es die Bewertung mehrerer 'Was-wäre-wenn'-Szenarien, die Optimierung von Entwurfs- und Betriebsentscheidungen sowie die Reduzierung von Kosten durch Fehler und Neugestaltung.",
+  "simo_p3": "Wir verwenden Werkzeuge wie CFD, FEM, DEM, COMSOL und MATLAB in einer dynamischen Umgebung, die an reale Daten angepasst ist und effiziente Lösungen iterativ entwickelt."
 }
