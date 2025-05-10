@@ -1,11 +1,19 @@
 {
+  "titulo": "SIMOpro - Ingeniería Aplicada a Operaciones",
   "inicio": "Inicio",
   "divisiones": "Divisiones",
-  "datacenter": "Datacenter",
+  "datacenter": "Data Center",
   "tuneleria": "Tunelería",
   "mineria": "Minería Subterránea",
   "electricidad": "Electricidad",
   "quienes_somos": "Quiénes somos",
   "trabaja": "Trabaja con nosotros",
-  "contacto": "Contacto"
+  "contacto": "Contacto",
+  "simulaciones": "Simulaciones",
+  "slide_simo_titulo": "SIMOcore® – Gemelos Digitales para la Toma de Decisiones",
+  "slide_simo_desc": "Modelamos escenarios operativos reales con simulación avanzada para anticipar fallos y optimizar resultados.",
+  "simo_que_es": "¿Qué es SIMOcore®?",
+  "simo_p1": "SIMOcore® es un enfoque de ingeniería que construye gemelos digitales multivariables para simular el comportamiento real de sistemas operativos en minería, data centers, electricidad y tunelería.",
+  "simo_p2": "A diferencia de los estudios tradicionales, permite evaluar múltiples escenarios “qué pasaría si”, optimizar decisiones de diseño y operación, y reducir costos asociados a fallos y rediseños.",
+  "simo_p3": "Aplicamos herramientas como CFD, FEM, DEM, COMSOL y MATLAB en un entorno dinámico, ajustado a datos reales y listo para iterar soluciones eficientes."
 }
