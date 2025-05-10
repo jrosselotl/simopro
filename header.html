@@ -54,23 +54,5 @@
 
   <!-- Script idioma -->
   <script src="js/i18n.js"></script>
-  <script>
-  fetch('header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('header-container').innerHTML = data;
-
-      // ⚠️ Aquí cargamos i18n.js manualmente después de insertar el header
-      const script = document.createElement('script');
-      script.src = 'js/i18n.js';
-      document.body.appendChild(script);
-    });
-
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-</script>
 
 </header>
