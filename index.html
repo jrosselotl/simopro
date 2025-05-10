@@ -95,61 +95,45 @@
   </section>
 
   <!-- Divisiones -->
-  <section id="divisiones" class="py-20 bg-black text-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Divisiones</h2>
-      <div class="grid md:grid-cols-2 gap-10">
 
-        <!-- Data Center -->
-        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-datacenter.jpg')">
-          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
-            <h3 class="text-2xl font-bold mb-4">Data Center</h3>
-            <ul class="list-disc list-inside text-gray-300 space-y-1">
-              <li>CFD para racks y pasillos</li>
-              <li>Enfriamiento líquido por inmersión</li>
-              <li>Fallos térmicos y análisis PUE</li>
-            </ul>
-          </div>
-        </div>
+<section id="divisiones" class="w-full h-screen bg-black text-white px-4 py-12">
+  <h2 class="text-4xl font-bold text-center mb-10" data-i18n="divisiones">Divisiones</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-[80vh]">
 
-        <!-- Minería -->
-        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-mineria.jpg')">
-          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
-            <h3 class="text-2xl font-bold mb-4">Minería Subterránea</h3>
-            <ul class="list-disc list-inside text-gray-300 space-y-1">
-              <li>Tronadura, polvo y ventilación</li>
-              <li>Fracturamiento DEM/FEM</li>
-              <li>Evaluación térmica en frentes</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Tunelería -->
-        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-tuneleria.jpg')">
-          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
-            <h3 class="text-2xl font-bold mb-4">Tunelería</h3>
-            <ul class="list-disc list-inside text-gray-300 space-y-1">
-              <li>Simulación de TBM y sostenimiento</li>
-              <li>Incendios, evacuación y gases</li>
-              <li>Interacción túnel-terreno</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Electricidad -->
-        <div class="relative bg-cover bg-center rounded-lg p-6 division-card" style="background-image: url('images/bg-electricidad.jpg')">
-          <div class="bg-black bg-opacity-70 p-6 rounded-lg">
-            <h3 class="text-2xl font-bold mb-4">Electricidad</h3>
-            <ul class="list-disc list-inside text-gray-300 space-y-1">
-              <li>Simulación térmica de tableros</li>
-              <li>Análisis de fallos y cortocircuitos</li>
-              <li>Redes inteligentes y armonización</li>
-            </ul>
-          </div>
-        </div>
+    <!-- Data Center -->
+    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+      <img src="images/bg-datacenter.jpg" alt="Data Center" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
+      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
+        <h3 class="text-3xl font-bold text-white z-10" data-i18n="datacenter">Data Center</h3>
       </div>
     </div>
-  </section>
+
+    <!-- Minería Subterránea -->
+    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+      <img src="images/bg-mineria.jpg" alt="Minería Subterránea" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
+      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
+        <h3 class="text-3xl font-bold text-white z-10" data-i18n="mineria">Minería Subterránea</h3>
+      </div>
+    </div>
+
+    <!-- Tunelería -->
+    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+      <img src="images/bg-tuneleria.jpg" alt="Tunelería" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
+      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
+        <h3 class="text-3xl font-bold text-white z-10" data-i18n="tuneleria">Tunelería</h3>
+      </div>
+    </div>
+
+    <!-- Electricidad -->
+    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
+      <img src="images/bg-electricidad.jpg" alt="Electricidad" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
+      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
+        <h3 class="text-3xl font-bold text-white z-10" data-i18n="electricidad">Electricidad</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- Simulaciones -->
   <section id="simulaciones" class="py-20 bg-black text-white">
