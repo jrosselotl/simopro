@@ -1,6 +1,7 @@
 function setLanguage(lang) {
-  localStorage.setItem('language', lang); // guarda idioma
-  loadLanguage(lang);
+  localStorage.setItem('language', lang);
+  updateFlag(lang);      // cambia la bandera del header
+  loadLanguage(lang);    // carga textos
 }
 
 function loadLanguage(lang) {
@@ -15,9 +16,15 @@ function loadLanguage(lang) {
       });
     });
 }
-
-// Al cargar la página, carga idioma guardado o español por defecto
+function updateFlag(lang) {
+  const flag = document.getElementById("lang-flag");
+  if (flag) {
+    flag.src = `images/flags/${lang}.svg`;
+    flag.alt = lang.toUpperCase();
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
   const lang = localStorage.getItem('language') || 'es';
+  updateFlag(lang);
   loadLanguage(lang);
 });
