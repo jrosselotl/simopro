@@ -35,18 +35,23 @@
       </li>
     </ul>
   </nav>
-</header>
 
-<!-- JS para scroll dinámico del header -->
-<script>
-  const header = document.getElementById('main-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      header.classList.add('bg-black', 'shadow-md');
-      header.classList.remove('bg-transparent');
-    } else {
-      header.classList.remove('bg-black', 'shadow-md');
-      header.classList.add('bg-transparent');
-    }
-  });
-</script>
+  <!-- Script scroll: cambiar transparencia al hacer scroll -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 5) {
+          header.classList.add('bg-black', 'shadow-md');
+          header.classList.remove('bg-transparent');
+        } else {
+          header.classList.add('bg-transparent');
+          header.classList.remove('bg-black', 'shadow-md');
+        }
+      });
+    });
+  </script>
+
+  <!-- Script idioma -->
+  <script src="js/i18n.js"></script>
+</header>
