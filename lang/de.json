@@ -23,5 +23,9 @@
   "simo_que_es": "Was ist SIMOcore®?",
   "simo_p1": "SIMOcore® ist ein ingenieurtechnischer Ansatz, der digitale Zwillinge mit mehreren Variablen erstellt, um das reale Verhalten von Betriebssystemen in Bergbau, Rechenzentren, Elektrizität und Tunnelbau zu simulieren.",
   "simo_p2": "Im Gegensatz zu traditionellen Studien ermöglicht es die Bewertung mehrerer 'Was-wäre-wenn'-Szenarien, die Optimierung von Entwurfs- und Betriebsentscheidungen sowie die Reduzierung von Kosten durch Fehler und Neugestaltung.",
-  "simo_p3": "Wir verwenden Werkzeuge wie CFD, FEM, DEM, COMSOL und MATLAB in einer dynamischen Umgebung, die an reale Daten angepasst ist und effiziente Lösungen iterativ entwickelt."
+  "simo_p3": "Wir verwenden Werkzeuge wie CFD, FEM, DEM, COMSOL und MATLAB in einer dynamischen Umgebung, die an reale Daten angepasst ist und effiziente Lösungen iterativ entwickelt.",
+    "div_desc_dc": "Digitale Zwillinge von Reinräumen, CFD-Simulation von Racks, Gängen und CRACs, Analyse von thermischen Rückfällen und energetischer Optimierung unter realen Bedingungen. Wir entwerfen Rechenzentren virtuell vor dem Bau.",
+  "div_desc_mineria": "Wir modellieren das gesamte Untertageumfeld: Belüftung, Gase, Staub, Luftströmungen und Sprengungen. Mit FEM und DEM prognostizieren wir Brüche und Post-Blast-Zyklen. Sicherheit und Produktion werden durch Simulation optimiert.",
+  "div_desc_tuneleria": "Wir simulieren die Endbelüftung von Tunneln mit Jet Fans, analysieren Druck, Luftgeschwindigkeit, Energieverbrauch und Rauchabzug. Wir optimieren das Design und den Betrieb von Längsbelüftungssystemen für reale und Notfallszenarien.",
+  "div_desc_electricidad": "Wir analysieren thermisch Schaltschränke, Kabelkanäle und Leitungen. Wir simulieren Kurzschlüsse, Oberschwingungen, Selektivität und Lastverteilung. Das Stromnetz wird digitalisiert, um kritische Punkte vorherzusagen und die Betriebskontinuität zu verbessern."
 }
