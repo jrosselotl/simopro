@@ -1,17 +1,15 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("header.html")
-    .then(response => {
-      if (!response.ok) throw new Error("No se pudo cargar el header");
-      return response.text();
-    })
+    .then(res => res.text())
     .then(data => {
-      const body = document.querySelector("body");
-      const temp = document.createElement("div");
-      temp.innerHTML = data;
-      body.insertBefore(temp.firstElementChild, body.firstChild);
+      if (!document.querySelector("header")) {
+        const temp = document.createElement("div");
+        temp.innerHTML = data;
+        document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
+      }
 
-      // Agregar clase bg-black al hacer scroll
+      // Manejo del scroll para cambiar color del header
       document.addEventListener("scroll", () => {
         const header = document.querySelector("header");
         if (header) {
@@ -25,8 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Disparar evento scroll manualmente para aplicar clase si ya bajó
-      window.dispatchEvent(new Event("scroll"));
+      // Forzar reevaluación de scroll inicial
+      setTimeout(() => {
+        window.scrollBy(0, 1);
+        window.scrollBy(0, -1);
+      }, 300);
     })
-    .catch(error => console.error("Error al cargar header:", error));
+    .catch(err => console.error("Error cargando header:", err));
 });
