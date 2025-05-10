@@ -1,11 +1,19 @@
 {
+  "titulo": "SIMOpro - Engineering Applied to Operations",
   "inicio": "Home",
   "divisiones": "Divisions",
-  "datacenter": "Datacenter",
+  "datacenter": "Data Center",
   "tuneleria": "Tunneling",
   "mineria": "Underground Mining",
   "electricidad": "Electricity",
   "quienes_somos": "About Us",
   "trabaja": "Careers",
-  "contacto": "Contact"
+  "contacto": "Contact",
+  "simulaciones": "Simulations",
+  "slide_simo_titulo": "SIMOcore® – Digital Twins for Decision Making",
+  "slide_simo_desc": "We simulate real operational scenarios with advanced modeling to anticipate failures and optimize outcomes.",
+  "simo_que_es": "What is SIMOcore®?",
+  "simo_p1": "SIMOcore® is an engineering approach that builds multivariable digital twins to simulate the real behavior of operational systems in mining, data centers, electricity and tunneling.",
+  "simo_p2": "Unlike traditional studies, it allows evaluating multiple 'what if' scenarios, optimizing design and operation decisions, and reducing costs associated with failures and redesigns.",
+  "simo_p3": "We apply tools like CFD, FEM, DEM, COMSOL and MATLAB in a dynamic environment, adjusted to real data and ready to iterate efficient solutions."
 }
