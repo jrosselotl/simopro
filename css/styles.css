@@ -145,3 +145,71 @@ header.sticky {
 .division-block:hover .division-desc {
   opacity: 1;
 }
+/* Sección Quiénes Somos */
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner-text {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  color: white;
+  background-color: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 20;
+}
+
+.section-img {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.container-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.card-block {
+  background-color: #1f2937;
+  padding: 2rem;
+  border-radius: 1rem;
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  transition: transform 0.3s ease;
+}
+.card-block:hover {
+  transform: scale(1.03);
+}
+
+.card-block h2 {
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.card-block p {
+  color: #d1d5db;
+}
+
+.icon-img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
