@@ -23,5 +23,9 @@
   "simo_que_es": "¿Qué es SIMOcore®?",
   "simo_p1": "SIMOcore® es un enfoque de ingeniería que construye gemelos digitales multivariables para simular el comportamiento real de sistemas operativos en minería, data centers, electricidad y tunelería.",
   "simo_p2": "A diferencia de los estudios tradicionales, permite evaluar múltiples escenarios “qué pasaría si”, optimizar decisiones de diseño y operación, y reducir costos asociados a fallos y rediseños.",
-  "simo_p3": "Aplicamos herramientas como CFD, FEM, DEM, COMSOL y MATLAB en un entorno dinámico, ajustado a datos reales y listo para iterar soluciones eficientes."
+  "simo_p3": "Aplicamos herramientas como CFD, FEM, DEM, COMSOL y MATLAB en un entorno dinámico, ajustado a datos reales y listo para iterar soluciones eficientes.",
+  "div_desc_dc": "Gemelos digitales de salas blancas, simulación CFD de racks, pasillos y CRACs, análisis de fallback térmico y optimización energética bajo condiciones reales. Diseñamos data centers virtuales antes de que se construyan.",
+  "div_desc_mineria": "Modelamos el subsuelo completo: ventilación, gases, polvo, flujos de aire y tronadura. Usamos FEM y DEM para prever fracturas y ciclos post-blast. Optimizamos producción y seguridad desde la simulación.",
+  "div_desc_tuneleria": "Simulamos la ventilación final en túneles operativos mediante Jet Fans, evaluando presión, velocidad de aire, consumo energético y evacuación de humo. Optimizamos el diseño y operación de sistemas de ventilación longitudinal en condiciones reales y de emergencia.",
+  "div_desc_electricidad": "Analizamos térmicamente tableros, ductos y cables. Simulamos cortocircuitos, armónicos, selectividad y distribución de carga. Digitalizamos la red eléctrica para anticipar puntos críticos y mejorar continuidad operativa."
 }
