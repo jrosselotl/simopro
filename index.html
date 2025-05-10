@@ -239,6 +239,13 @@
     }, 300); // se asegura que Swiper esté pintado y el scroll detectado
   });
 </script>
-
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      window.scrollBy(0, 1);  // baja 1 pixel
+      window.scrollBy(0, -1); // vuelve arriba, pero dispara scroll
+    }, 400);
+  });
+</script>
 </body>
 </html>
