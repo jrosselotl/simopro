@@ -1,18 +1,50 @@
-<!-- header.html -->
-
-<header class="bg-blue-600 text-white fixed top-0 left-0 w-full z-50 shadow">
-  <div class="container mx-auto flex justify-between items-center px-6 py-4">
-    
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <!-- Logo -->
-    <h1 class="text-2xl font-bold font-poppins">SIMOpro</h1>
-    
-    <!-- Menú de navegación -->
-    <nav class="space-x-8 hidden md:flex">
-      <a href="index.html" class="hover:underline">Inicio</a>
-      <a href="servicios.html" class="hover:underline">Servicios</a>
-      <a href="contacto.html" class="hover:underline">Contacto</a>
-    </nav>
+    <a href="index.html" class="text-white font-bold font-poppins text-xl">SIMOpro</a>
 
-  </div>
+    <!-- Navegación -->
+    <ul class="flex items-center gap-6 text-white font-medium">
+      <li><a href="index.html" class="hover:text-blue-400 transition">Inicio</a></li>
+
+      <!-- Divisiones Dropdown -->
+      <li class="relative group">
+        <span class="cursor-pointer hover:text-blue-400 transition">Divisiones</span>
+        <ul class="absolute left-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 min-w-[200px]">
+          <li><a href="divisiones/datacenter.html" class="block px-4 py-2 hover:bg-gray-800">Datacenter</a></li>
+          <li><a href="divisiones/tuneleria.html" class="block px-4 py-2 hover:bg-gray-800">Tunelería</a></li>
+          <li><a href="divisiones/mineria.html" class="block px-4 py-2 hover:bg-gray-800">Minería Subterránea</a></li>
+          <li><a href="divisiones/electricidad.html" class="block px-4 py-2 hover:bg-gray-800">Electricidad</a></li>
+        </ul>
+      </li>
+
+      <li><a href="quienes-somos.html" class="hover:text-blue-400 transition">Quiénes somos</a></li>
+      <li><a href="trabaja-con-nosotros.html" class="hover:text-blue-400 transition">Trabaja con nosotros</a></li>
+      <li><a href="contacto.html" class="hover:text-blue-400 transition">Contacto</a></li>
+
+      <!-- Selector de idioma -->
+      <li class="relative group">
+        <span class="cursor-pointer flex items-center gap-1">
+          <img src="images/flags/es.svg" alt="ES" class="w-5 h-5"> <!-- Idioma actual -->
+        </span>
+        <ul class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50">
+          <li class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/gb.svg" alt="EN" class="w-5 h-5"> Inglés</li>
+          <li class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/de.svg" alt="DE" class="w-5 h-5"> Alemán</li>
+          <li class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/es.svg" alt="ES" class="w-5 h-5"> Español</li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 </header>
 
+<!-- JS para cambio de fondo al hacer scroll -->
+<script>
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header.classList.add('bg-black', 'shadow-md');
+    } else {
+      header.classList.remove('bg-black', 'shadow-md');
+    }
+  });
+</script>
