@@ -232,6 +232,13 @@
       document.getElementById('footer-container').innerHTML = data;
     });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      window.dispatchEvent(new Event("scroll"));
+    }, 300); // se asegura que Swiper esté pintado y el scroll detectado
+  });
+</script>
 
 </body>
 </html>
