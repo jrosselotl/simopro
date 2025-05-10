@@ -1,50 +1,52 @@
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
   <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <!-- Logo -->
-    <a href="index.html" class="text-white font-bold font-poppins text-xl">SIMOpro</a>
+    <a href="index.html" class="text-white font-bold text-xl">SIMOpro</a>
 
     <!-- Navegación -->
     <ul class="flex items-center gap-6 text-white font-medium">
-      <li><a href="index.html" class="hover:text-blue-400 transition">Inicio</a></li>
+      <li><a href="index.html" data-i18n="inicio" class="hover:text-blue-400 transition">Inicio</a></li>
 
       <!-- Divisiones Dropdown -->
       <li class="relative group">
-        <span class="cursor-pointer hover:text-blue-400 transition">Divisiones</span>
+        <span class="cursor-pointer hover:text-blue-400 transition" data-i18n="divisiones">Divisiones</span>
         <ul class="absolute left-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 min-w-[200px]">
-          <li><a href="divisiones/datacenter.html" class="block px-4 py-2 hover:bg-gray-800">Datacenter</a></li>
-          <li><a href="divisiones/tuneleria.html" class="block px-4 py-2 hover:bg-gray-800">Tunelería</a></li>
-          <li><a href="divisiones/mineria.html" class="block px-4 py-2 hover:bg-gray-800">Minería Subterránea</a></li>
-          <li><a href="divisiones/electricidad.html" class="block px-4 py-2 hover:bg-gray-800">Electricidad</a></li>
+          <li><a href="divisiones/datacenter.html" class="block px-4 py-2 hover:bg-gray-800" data-i18n="datacenter">Datacenter</a></li>
+          <li><a href="divisiones/tuneleria.html" class="block px-4 py-2 hover:bg-gray-800" data-i18n="tuneleria">Tunelería</a></li>
+          <li><a href="divisiones/mineria.html" class="block px-4 py-2 hover:bg-gray-800" data-i18n="mineria">Minería Subterránea</a></li>
+          <li><a href="divisiones/electricidad.html" class="block px-4 py-2 hover:bg-gray-800" data-i18n="electricidad">Electricidad</a></li>
         </ul>
       </li>
 
-      <li><a href="quienes-somos.html" class="hover:text-blue-400 transition">Quiénes somos</a></li>
-      <li><a href="trabaja-con-nosotros.html" class="hover:text-blue-400 transition">Trabaja con nosotros</a></li>
-      <li><a href="contacto.html" class="hover:text-blue-400 transition">Contacto</a></li>
+      <li><a href="quienes-somos.html" class="hover:text-blue-400 transition" data-i18n="quienes_somos">Quiénes somos</a></li>
+      <li><a href="trabaja-con-nosotros.html" class="hover:text-blue-400 transition" data-i18n="trabaja">Trabaja con nosotros</a></li>
+      <li><a href="contacto.html" class="hover:text-blue-400 transition" data-i18n="contacto">Contacto</a></li>
 
-      <!-- Selector de idioma -->
+      <!-- Idioma selector -->
       <li class="relative group">
         <span class="cursor-pointer flex items-center gap-1">
-          <img src="images/flags/es.svg" alt="ES" class="w-5 h-5"> <!-- Idioma actual -->
+          <img src="images/flags/es.svg" alt="ES" class="w-5 h-5">
         </span>
-        <ul class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50">
-          <li class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/gb.svg" alt="EN" class="w-5 h-5"> Inglés</li>
-          <li class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/de.svg" alt="DE" class="w-5 h-5"> Alemán</li>
-          <li class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/es.svg" alt="ES" class="w-5 h-5"> Español</li>
+        <ul class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 overflow-visible w-40">
+          <li onclick="setLanguage('en')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/gb.svg" class="w-5 h-5"> Inglés</li>
+          <li onclick="setLanguage('de')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/de.svg" class="w-5 h-5"> Alemán</li>
+          <li onclick="setLanguage('es')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/es.svg" class="w-5 h-5"> Español</li>
         </ul>
       </li>
     </ul>
   </nav>
 </header>
 
-<!-- JS para cambio de fondo al hacer scroll -->
+<!-- JS para scroll dinámico del header -->
 <script>
   const header = document.getElementById('main-header');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 30) {
       header.classList.add('bg-black', 'shadow-md');
+      header.classList.remove('bg-transparent');
     } else {
       header.classList.remove('bg-black', 'shadow-md');
+      header.classList.add('bg-transparent');
     }
   });
 </script>
