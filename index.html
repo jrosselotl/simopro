@@ -96,56 +96,57 @@
 
   <!-- Divisiones -->
 
-<section id="divisiones" class="w-full h-screen bg-black text-white px-4 py-12">
-  <h2 class="text-4xl font-bold text-center mb-10" data-i18n="divisiones">Divisiones</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-[80vh]">
+<section id="divisiones" class="w-full py-20 bg-black text-white px-4">
+  <h2 class="text-4xl font-bold text-center mb-12" data-i18n="divisiones">Divisiones</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
 
     <!-- Data Center -->
-    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
-      <img src="images/bg-datacenter.jpg" alt="Data Center" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
-        <h3 class="text-3xl font-bold text-white z-10" data-i18n="datacenter">Data Center</h3>
-        <p class="text-sm text-gray-300 z-10 max-w-xs" data-i18n="div_desc_dc">
-      Gemelos digitales de salas blancas, simulación CFD de racks, pasillos y CRACs, análisis de fallback térmico y optimización energética.
-    </p>
+    <div class="relative rounded-lg overflow-hidden shadow-lg">
+      <img src="images/bg-datacenter.jpg" alt="Data Center" class="w-full h-60 md:h-72 object-cover" />
+      <div class="bg-black bg-opacity-80 p-6">
+        <h3 class="text-2xl font-bold mb-2" data-i18n="datacenter">Data Center</h3>
+        <p class="text-gray-300 text-sm" data-i18n="div_desc_dc">
+          Gemelos digitales de salas blancas, simulación CFD de racks, pasillos y CRACs, análisis de fallback térmico y optimización energética bajo condiciones reales. Diseñamos data centers virtuales antes de que se construyan.
+        </p>
       </div>
     </div>
 
     <!-- Minería Subterránea -->
-    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
-      <img src="images/bg-mineria.jpg" alt="Minería Subterránea" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
-        <h3 class="text-3xl font-bold text-white z-10" data-i18n="mineria">Minería Subterránea</h3>
-        <p class="text-sm text-gray-300 z-10 max-w-xs" data-i18n="div_desc_mineria">
-      Modelamos el subsuelo completo: ventilación, gases, polvo, flujos de aire y tronadura. Usamos FEM y DEM para prever fracturas y ciclos post-blast. Optimizamos producción y seguridad desde la simulación.
-    </p>
+    <div class="relative rounded-lg overflow-hidden shadow-lg">
+      <img src="images/bg-mineria.jpg" alt="Minería Subterránea" class="w-full h-60 md:h-72 object-cover" />
+      <div class="bg-black bg-opacity-80 p-6">
+        <h3 class="text-2xl font-bold mb-2" data-i18n="mineria">Minería Subterránea</h3>
+        <p class="text-gray-300 text-sm" data-i18n="div_desc_mineria">
+          Modelamos el subsuelo completo: ventilación, gases, polvo, flujos de aire y tronadura. Usamos FEM y DEM para prever fracturas y ciclos post-blast. Optimizamos producción y seguridad desde la simulación.
+        </p>
       </div>
     </div>
 
-    <!-- Tunelería Vial -->
-    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
-      <img src="images/bg-tuneleria.jpg" alt="Tunelería Vial" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
-        <h3 class="text-3xl font-bold text-white z-10" data-i18n="tuneleria">Tunelería Vial</h3>
-        <p class="text-sm text-gray-300 z-10 max-w-xs" data-i18n="div_desc_tuneleria">
-      Simulamos la ventilación final en túneles operativos mediante Jet Fans, evaluando presión, velocidad de aire, consumo energético y evacuación de humo. Optimizamos el diseño y operación de sistemas de ventilación longitudinal en condiciones reales y de emergencia.
-    </p>
+    <!-- Tunelería -->
+    <div class="relative rounded-lg overflow-hidden shadow-lg">
+      <img src="images/bg-tuneleria.jpg" alt="Tunelería" class="w-full h-60 md:h-72 object-cover" />
+      <div class="bg-black bg-opacity-80 p-6">
+        <h3 class="text-2xl font-bold mb-2" data-i18n="tuneleria">Tunelería Vial</h3>
+        <p class="text-gray-300 text-sm" data-i18n="div_desc_tuneleria">
+          Simulamos la ventilación final en túneles operativos mediante Jet Fans, evaluando presión, velocidad de aire, consumo energético y evacuación de humo. Optimizamos el diseño y operación de sistemas de ventilación longitudinal en condiciones reales y de emergencia.
+        </p>
       </div>
     </div>
 
     <!-- Electricidad -->
-    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer">
-      <img src="images/bg-electricidad.jpg" alt="Electricidad" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-      <div class="absolute inset-0 bg-black bg-opacity-60 group-hover:bg-opacity-80 transition duration-700 flex items-center justify-center">
-        <h3 class="text-3xl font-bold text-white z-10" data-i18n="electricidad">Electricidad</h3>
-        <p class="text-sm text-gray-300 z-10 max-w-xs" data-i18n="div_desc_electricidad">
-      Analizamos térmicamente tableros, ductos y cables. Simulamos cortocircuitos, armónicos, selectividad y distribución de carga. Digitalizamos la red eléctrica para anticipar puntos críticos y mejorar continuidad operativa.
-    </p>
+    <div class="relative rounded-lg overflow-hidden shadow-lg">
+      <img src="images/bg-electricidad.jpg" alt="Electricidad" class="w-full h-60 md:h-72 object-cover" />
+      <div class="bg-black bg-opacity-80 p-6">
+        <h3 class="text-2xl font-bold mb-2" data-i18n="electricidad">Electricidad</h3>
+        <p class="text-gray-300 text-sm" data-i18n="div_desc_electricidad">
+          Analizamos térmicamente tableros, ductos y cables. Simulamos cortocircuitos, armónicos, selectividad y distribución de carga. Digitalizamos la red eléctrica para anticipar puntos críticos y mejorar continuidad operativa.
+        </p>
       </div>
     </div>
 
   </div>
 </section>
+
 
   <!-- Simulaciones -->
   <section id="simulaciones" class="py-20 bg-black text-white">
