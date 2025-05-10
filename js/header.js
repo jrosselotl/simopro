@@ -20,3 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => console.error("Error al cargar header:", error));
 });
+document.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add("bg-black", "shadow-md");
+      header.classList.remove("bg-transparent");
+    } else {
+      header.classList.remove("bg-black", "shadow-md");
+      header.classList.add("bg-transparent");
+    }
+  }
+});
