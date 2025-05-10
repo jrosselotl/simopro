@@ -1,8 +1,8 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   fetch("header.html")
     .then(res => res.text())
     .then(data => {
-      // Evitar duplicados
       const existingHeader = document.querySelector("header#main-header");
       if (!existingHeader) {
         const temp = document.createElement("div");
@@ -10,19 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
       }
 
-      // Asegurarse que el header esté en el DOM antes de hacer scroll
+      // Esperar a que el header esté en el DOM
       setTimeout(() => {
         const header = document.querySelector("header#main-header");
         if (!header) return;
 
-        // Agregar clase si ya bajó
-        if (window.scrollY > 50) {
-          header.classList.add("bg-black", "shadow-md");
-          header.classList.remove("bg-transparent");
-        }
-
-        // Escuchar scroll
-        window.addEventListener("scroll", () => {
+        // Aplicar estado inicial basado en scroll
+        const handleScroll = () => {
           if (window.scrollY > 50) {
             header.classList.add("bg-black", "shadow-md");
             header.classList.remove("bg-transparent");
@@ -30,8 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
             header.classList.remove("bg-black", "shadow-md");
             header.classList.add("bg-transparent");
           }
-        });
-      }, 300); // espera a que el header esté insertado
+        };
+
+        // Llamar una vez e instalar el listener
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+      }, 500); // pequeño retraso tras insertar el header
     })
     .catch(error => console.error("Error al cargar el header:", error));
 });
