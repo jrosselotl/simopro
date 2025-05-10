@@ -1,58 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIMOworld - Nosotros</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiénes Somos | SIMOpro</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <nav>
-    <div class="logo">SIMOworld</div>
-    <button class="menu-toggle" aria-label="Menú">&#9776;</button>
-    <ul class="menu">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="services.html">Servicios</a></li>
-      <li><a href="about.html">Nosotros</a></li>
-      <li class="contact"><a href="contact.html">Contacto</a></li>
-      <li class="lang-switch">ES | <a href="about_en.html">EN</a></li>
-    </ul>
-  </nav>
+  <!-- Header -->
+  <div id="header"></div>
 
-  <main>
-    <header class="page-header">
-      <h1>Sobre SIMOworld</h1>
-      <p>SIMOworld es una empresa especializada en simulación de entornos de centros de datos y tecnologías de refrigeración avanzada.</p>
-    </header>
+  <!-- Banner -->
+  <section class="banner-about">
+    <img src="images/banner-about.jpg" alt="Banner SIMOpro" class="banner-img" />
+    <div class="banner-text">
+      <h1>Quiénes Somos</h1>
+    </div>
+  </section>
 
-    <section class="company-info">
-      <p>Desde nuestra fundación, nos hemos dedicado a ayudar a empresas a optimizar el rendimiento de sus infraestructuras de TI. Utilizamos herramientas de simulación de alta fidelidad para ofrecer información valiosa que guía el diseño eficiente de centros de datos y sistemas de enfriamiento.</p>
-      <p>Nuestra misión es brindar soluciones innovadoras que reduzcan costos operativos y el impacto ambiental. Contamos con un equipo multidisciplinario de ingenieros y expertos en fluidos que trabajan con pasión para impulsar la innovación en el sector.</p>
-    </section>
-
-    <section class="team">
+  <!-- Presentación -->
+  <section class="section-light">
+    <div class="container">
       <h2>Nuestro Equipo</h2>
-      <div class="team-list">
-        <div class="team-member">
-          <img src="img/person1.jpg" alt="CEO" class="team-photo">
-          <h3>Carlos García</h3>
-          <p>CEO</p>
-        </div>
-        <div class="team-member">
-          <img src="img/person2.jpg" alt="CTO" class="team-photo">
-          <h3>Ana López</h3>
-          <p>CTO</p>
-        </div>
+      <p>
+        En SIMOpro somos un equipo multidisciplinario de ingenieros con experiencia en simulación, evaluación de proyectos y ejecución de operaciones en terreno. Creamos esta empresa con una visión clara: resolver los problemas reales de las operaciones mediante ingeniería avanzada y herramientas de modelamiento.
+      </p>
+      <img src="images/equipo-simopro.jpg" alt="Equipo SIMOpro" class="section-img" />
+    </div>
+  </section>
+
+  <!-- Misión y Visión -->
+  <section class="section-dark">
+    <div class="container-flex">
+      <!-- Misión -->
+      <div class="card-block">
+        <img src="images/icono-mision.png" alt="Misión" class="icon-img" />
+        <h2>Misión</h2>
+        <p>
+          Transformar la forma en que se diseñan y ejecutan sistemas de climatización, minería, electricidad y tunelería mediante soluciones que se alinean con la realidad operativa, permitiendo tomar decisiones informadas y eficientes.
+        </p>
       </div>
-    </section>
-  </main>
+      <!-- Visión -->
+      <div class="card-block">
+        <img src="images/icono-vision.png" alt="Visión" class="icon-img" />
+        <h2>Visión</h2>
+        <p>
+          Convertirnos en referentes de ingeniería aplicada a operaciones, ofreciendo soluciones de modelamiento avanzadas que impacten directamente en el rendimiento, sostenibilidad y eficiencia de los sistemas.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 SIMOworld. Todos los derechos reservados.</p>
-    <p>Madrid, España | Tel: +34 910 000 000 | Email: info@simoworld.com</p>
-  </footer>
+  <!-- Diferenciación SIMOcore -->
+  <section class="section-light">
+    <div class="container">
+      <h2>Diferenciación SIMOcore®</h2>
+      <p>
+        A través de nuestra metodología <strong>SIMOcore®</strong>, validamos cada simulación con documentación técnica y parámetros reales. Esto nos permite entregar productos que optimizan el diseño, reducen el costo de operación y aseguran la disponibilidad de los sistemas desde la etapa de planificación.
+      </p>
+      <p>
+        Por ejemplo, en climatización, calculamos el requerimiento real de enfriamiento, evitando sobrecompra o subdimensionamiento de equipos. En minería o túneles, evaluamos ventilación, propagación de calor y distribución eléctrica con herramientas CFD, FEM y DEM.
+      </p>
+      <img src="images/simocore.jpg" alt="SIMOcore" class="section-img" />
+    </div>
+  </section>
 
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
 </body>
 </html>
