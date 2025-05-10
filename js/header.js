@@ -32,3 +32,4 @@ document.addEventListener("scroll", () => {
     }
   }
 });
+window.dispatchEvent(new Event('scroll'));
