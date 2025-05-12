@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         handleScroll(); // verificar estado actual
         window.addEventListener("scroll", handleScroll);
+        cargarMenuDinamico();
       }, 500); // asegura que el header esté renderizado
     })
     .catch(error => console.error("Error al cargar header:", error));
@@ -56,7 +57,7 @@ function cargarMenuDinamico() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", cargarMenuDinamico);
+
 document.addEventListener("DOMContentLoaded", () => {
   const lang = localStorage.getItem("lang") || "es";
   if (typeof setLanguage === "function") {
