@@ -15,7 +15,7 @@
 <body>
 
   <!-- Header -->
-  <div id="header"></div>
+  <div id="header-container"></div>
 
 <!-- banner -->
 <section class="relative h-40 md:h-72 w-full overflow-hidden">
@@ -92,10 +92,38 @@
   </div>
 </section>
 
-  <!-- Footer -->
-  <div id="footer"></div>
+ <!-- Footer dinámico -->
+<div id="footer-container"></div>
 
-  <script src="js/header.js"></script>
-  <script src="js/footer.js"></script>
+<!-- Carga de header.js, i18n.js, y lógica adicional -->
+<script src="js/header.js" defer></script>
+<script src="js/i18n.js" defer></script>
+
+<script>
+  // Cargar el footer desde archivo externo
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+
+  // Forzar scroll para activar sticky header
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      window.scrollBy(0, 1);
+      window.scrollBy(0, -1);
+    }, 400);
+  });
+
+  // Reaplicar idioma una vez esté cargado todo
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const lang = localStorage.getItem("lang") || "es";
+      if (typeof setLanguage === "function") {
+        setLanguage(lang);
+      }
+    }, 500);
+  });
+</script>
 </body>
 </html>
