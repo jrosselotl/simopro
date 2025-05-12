@@ -57,3 +57,10 @@ function cargarMenuDinamico() {
 }
 
 document.addEventListener("DOMContentLoaded", cargarMenuDinamico);
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = localStorage.getItem("lang") || "es";
+  if (typeof setLanguage === "function") {
+    setLanguage(lang);
+  }
+});
+
