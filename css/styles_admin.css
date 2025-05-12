@@ -1,0 +1,81 @@
+/* === styles_admin.css === */
+
+/* General */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar */
+aside {
+  background-color: #1d4ed8; /* Azul fuerte */
+  color: white;
+}
+
+/* Botones del sidebar */
+aside button {
+  background: none;
+  border: none;
+  text-align: left;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+aside button:hover {
+  background-color: #2563eb;
+}
+
+/* Contenedor principal */
+main {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+/* Entradas */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Botón primario */
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+/* Listas */
+ul.list-disc li {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Títulos */
+h1, h2, h3, h4 {
+  color: #000;
+}
+
+/* Tarjetas */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
