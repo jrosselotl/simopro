@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <label>Imagen (URL):</label>
         <input type="text" class="w-full p-2 border mb-2" value="\${slide.image}" onchange="updateSlide(\${index}, 'image', this.value)">
         <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(\${index})">Eliminar</button>
-      \`;
+      ;
       sliderContainer.appendChild(slideEl);
     });
   }
