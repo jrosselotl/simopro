@@ -40,39 +40,34 @@ document.addEventListener("DOMContentLoaded", function () {
     form.reset();
   });
 });
-// Cargar servicios padre e hijo en el <select>
 document.addEventListener("DOMContentLoaded", () => {
-  const divSelect = document.getElementById("formDivision");
-  const servSelect = document.getElementById("formServicio");
+  const selectDivision = document.getElementById("formDivision");
+  const selectServicio = document.getElementById("formServicio");
 
   const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
 
-  function cargarDivisiones() {
-    divSelect.innerHTML = "<option value=''>Selecciona una división</option>";
-    data.forEach(d => {
-      const opt = document.createElement("option");
-      opt.value = d.slug;
-      opt.textContent = d.division;
-      divSelect.appendChild(opt);
-    });
-  }
-
-  function cargarServicios(slug) {
-    servSelect.innerHTML = "<option value=''>Selecciona un servicio</option>";
-    const division = data.find(d => d.slug === slug);
-    if (!division) return;
-    division.servicios.forEach(s => {
-      const opt = document.createElement("option");
-      opt.value = s.slug;
-      opt.textContent = s.nombre;
-      servSelect.appendChild(opt);
-    });
-  }
-
-  divSelect.addEventListener("change", () => {
-    const selected = divSelect.value;
-    cargarServicios(selected);
+  selectDivision.innerHTML = "";
+  data.forEach(div => {
+    const opt = document.createElement("option");
+    opt.value = div.slug;
+    opt.textContent = div.division;
+    selectDivision.appendChild(opt);
   });
 
-  cargarDivisiones();
+  selectDivision.addEventListener("change", () => {
+    const selected = data.find(d => d.slug === selectDivision.value);
+    selectServicio.innerHTML = "";
+    selected?.servicios.forEach(serv => {
+      const opt = document.createElement("option");
+      opt.value = serv.slug;
+      opt.textContent = serv.nombre;
+      selectServicio.appendChild(opt);
+    });
+  });
+
+  // Llenar servicios por defecto en la carga inicial
+  if (data.length > 0) {
+    selectDivision.value = data[0].slug;
+    selectDivision.dispatchEvent(new Event("change"));
+  }
 });
