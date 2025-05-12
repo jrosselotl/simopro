@@ -33,28 +33,32 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function cargarMenuDinamico() {
   const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
-
   const menuDivisiones = document.getElementById("menu-divisiones");
-
   if (!menuDivisiones) return;
 
-  menuDivisiones.innerHTML = ""; // limpiar antes de poblar
+  menuDivisiones.innerHTML = "";
 
   data.forEach(div => {
     const li = document.createElement("li");
     li.className = "relative group";
 
     li.innerHTML = `
-      <span class="cursor-pointer flex items-center gap-1 px-4 py-2 hover:bg-gray-800">\${div.division}</span>
-      <ul class="absolute left-0 top-full mt-1 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 min-w-[200px]">
-        \${div.servicios.map(s => \`
-          <li><a href="servicios/\${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800">\${s.nombre}</a></li>
-        \`).join("")}
+      <div class="cursor-pointer px-4 py-2 hover:bg-gray-800 text-white">${div.division}</div>
+      <ul class="absolute left-full top-0 ml-2 bg-black text-white rounded-md shadow-lg hidden group-hover:block min-w-[200px] z-50">
+        ${div.servicios.map(s => `
+          <li><a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a></li>
+        `).join("")}
       </ul>
     `;
 
     menuDivisiones.appendChild(li);
   });
+}
+
+
+function toggleLangMenuMobile() {
+  const menu = document.getElementById("lang-menu-mobile");
+  menu.classList.toggle("hidden");
 }
 
 
