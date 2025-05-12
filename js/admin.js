@@ -43,3 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderSlides();
 });
+
+window.mostrarSeccion = mostrarSeccion;
+window.agregarDivision = agregarDivision;
+window.eliminarDivision = eliminarDivision;
+window.eliminarServicio = eliminarServicio;
+window.editarNombre = editarNombre;
+window.agregarServicio = agregarServicio;
