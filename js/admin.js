@@ -41,8 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   renderSlides();
-  renderVista();
-  actualizarSelectorDivisiones();
 });
 
 // ========== DIVISIONES Y SERVICIOS ==========
@@ -184,3 +182,7 @@ function editarNombre(element, tipo, divisionSlug = null) {
 
   saveDivisiones(data);
 }
+document.addEventListener("DOMContentLoaded", () => {
+  renderVista();
+  actualizarSelectorDivisiones();
+});
