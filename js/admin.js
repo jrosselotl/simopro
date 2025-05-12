@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const slideEl = document.createElement("div");
       slideEl.className = "p-4 mb-4 bg-white rounded shadow";
       slideEl.innerHTML = \`
-        <label>Título:</label>
-        <input type="text" class="w-full p-2 border mb-2" value="\${slide.title}" onchange="updateSlide(\${index}, 'title', this.value)">
-        <label>Texto:</label>
-        <input type="text" class="w-full p-2 border mb-2" value="\${slide.text}" onchange="updateSlide(\${index}, 'text', this.value)">
-        <label>Imagen (URL):</label>
-        <input type="text" class="w-full p-2 border mb-2" value="\${slide.image}" onchange="updateSlide(\${index}, 'image', this.value)">
-        <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(\${index})">Eliminar</button>
-      ;
+  <label>Título:</label>
+  <input type="text" class="w-full p-2 border mb-2" value="\${slide.title}" onchange="updateSlide(\${index}, 'title', this.value)">
+  <label>Texto:</label>
+  <input type="text" class="w-full p-2 border mb-2" value="\${slide.text}" onchange="updateSlide(\${index}, 'text', this.value)">
+  <label>Imagen (URL):</label>
+  <input type="text" class="w-full p-2 border mb-2" value="\${slide.image}" onchange="updateSlide(\${index}, 'image', this.value)">
+  <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(\${index})">Eliminar</button>
+\`;
       sliderContainer.appendChild(slideEl);
     });
   }
