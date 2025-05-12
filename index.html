@@ -182,19 +182,6 @@
       </div>
     </div>
   </section>
-  <!-- SwiperJS Script -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.mySwiper', {
-      loop: true,
-      autoplay: { delay: 6000 },
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
-    });
-  </script>
 <!-- Footer dinámico -->
 <div id="footer-container"></div>
 
@@ -228,6 +215,18 @@
     }, 500);
   });
 </script>
-
+ <!-- SwiperJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.mySwiper', {
+      loop: true,
+      autoplay: { delay: 6000 },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+  </script>
 </body>
 </html>
