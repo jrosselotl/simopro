@@ -120,6 +120,7 @@ function renderVista() {
       li.className = "text-black cursor-pointer";
 li.setAttribute("data-slug", serv.slug);
 li.setAttribute("onclick", `editarNombre(this, 'servicio', '${div.slug}')`);
+      li.textContent = serv.nombre;
       ul.appendChild(li);
     });
     vista.appendChild(divWrap);
