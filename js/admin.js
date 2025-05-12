@@ -146,36 +146,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const hijoInput = document.getElementById("servicio-hijo");
   const btn = document.getElementById("agregar-servicio");
   const msg = document.getElementById("servicio-msg");
+function mostrarSeccion(id) {
+  const secciones = ['crear-division', 'crear-servicio'];
+  secciones.forEach(sec => {
+    const el = document.getElementById(sec);
+    if (el) el.classList.add('hidden');
+  });
+  const activa = document.getElementById(id);
+  if (activa) activa.classList.remove('hidden');
+}
 
-  if (padreInput && hijoInput && btn && msg) {
-    btn.addEventListener("click", () => {
-      const padre = padreInput.value.trim();
-      const hijo = hijoInput.value.trim();
-
-      if (!padre || !hijo) {
-        msg.textContent = "Debes completar ambos campos.";
-        msg.className = "text-red-500 mt-2";
-        return;
-      }
-
-      let servicios = JSON.parse(localStorage.getItem("servicios")) || {};
-
-      if (!servicios[padre]) {
-        servicios[padre] = [];
-      }
-
-      if (!servicios[padre].includes(hijo)) {
-        servicios[padre].push(hijo);
-      }
-
-      localStorage.setItem("servicios", JSON.stringify(servicios));
-
-      msg.textContent = `Servicio "${hijo}" agregado bajo "${padre}".`;
-      msg.className = "text-green-600 mt-2";
-
-      padreInput.value = "";
-      hijoInput.value = "";
-    });
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  mostrarSeccion('crear-division');
 });
+
 
