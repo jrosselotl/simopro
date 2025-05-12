@@ -16,8 +16,7 @@
 
   <!-- CSS personalizado -->
   <link rel="stylesheet" href="css/styles.css" />
-  <script src="js/header.js" defer></script>
-  <script src="js/i18n.js" defer></script>
+
 </head>
 
 <body class="bg-black text-white">
@@ -183,59 +182,6 @@
       </div>
     </div>
   </section>
-  <!-- Inicio header/footer-->
-<script>
-  // Cargar dinámicamente el header
-fetch("header.html")
-  .then(res => res.text())
-  .then(data => {
-    const temp = document.createElement("div");
-    temp.innerHTML = data;
-    const header = temp.querySelector("header#main-header");
-    if (!document.querySelector("header#main-header")) {
-      document.body.insertBefore(header, document.body.firstChild);
-    }
-  });
-  // Cargar footer normalmente
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-
-  const script = document.createElement("script");
-    script.src = "js/i18n.js";
-    script.onload = () => {
-      const lang = localStorage.getItem("lang") || "es";
-      if (typeof setLanguage === "function") {
-        setLanguage(lang);
-      }
-    };
-    document.body.appendChild(script);
-  });
-
-
-</script>
-
-  <!-- Footer dinámico -->
-  <div id="footer-container"></div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      window.dispatchEvent(new Event("scroll"));
-    }, 300); // se asegura que Swiper esté pintado y el scroll detectado
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      window.scrollBy(0, 1);  // baja 1 pixel
-      window.scrollBy(0, -1); // vuelve arriba, pero dispara scroll
-    }, 400);
-  });
-  </script> <!-- Fin header/footer-->
-  
   <!-- SwiperJS Script -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script>
@@ -249,6 +195,39 @@ fetch("header.html")
       }
     });
   </script>
+<!-- Footer dinámico -->
+<div id="footer-container"></div>
+
+<!-- Carga de header.js, i18n.js, y lógica adicional -->
+<script src="js/header.js" defer></script>
+<script src="js/i18n.js" defer></script>
+
+<script>
+  // Cargar el footer desde archivo externo
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+
+  // Forzar scroll para activar sticky header
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      window.scrollBy(0, 1);
+      window.scrollBy(0, -1);
+    }, 400);
+  });
+
+  // Reaplicar idioma una vez esté cargado todo
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const lang = localStorage.getItem("lang") || "es";
+      if (typeof setLanguage === "function") {
+        setLanguage(lang);
+      }
+    }, 500);
+  });
+</script>
 
 </body>
 </html>
