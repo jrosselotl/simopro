@@ -65,8 +65,23 @@
     });
   </script>
     <script defer src="js/contact.js"></script>
-    <script src="js/header.js" defer></script>
-  <script src="js/footer.js" defer></script>
+<script>
+  fetch('header.html').then(res => res.text()).then(data => {
+    document.getElementById('header-container').innerHTML = data;
+
+    const script = document.createElement('script');
+    script.src = 'js/i18n.js';
+    script.onload = () => {
+      const defaultLang = localStorage.getItem('lang') || 'es';
+      setLanguage(defaultLang);
+    };
+    document.body.appendChild(script);
+  });
+
+  fetch('footer.html').then(res => res.text()).then(data => {
+    document.getElementById('footer-container').innerHTML = data;
+  });
+</script>
 </body>
 </html>
 
