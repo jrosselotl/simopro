@@ -3,24 +3,35 @@ function cargarMenuDinamico() {
   const menuDivisiones = document.getElementById("menu-divisiones");
   if (!menuDivisiones) return;
 
-  menuDivisiones.innerHTML = "";
+  menuDivisiones.innerHTML = ""; // Limpiar el menú
 
   data.forEach(div => {
     const li = document.createElement("li");
     li.className = "relative group";
 
+    const hasServicios = div.servicios && div.servicios.length > 0;
+
     li.innerHTML = `
-      <div class="cursor-pointer px-4 py-2 hover:bg-gray-800 text-white">${div.division}</div>
-      <ul class="absolute left-full top-0 ml-2 bg-black text-white rounded-md shadow-lg hidden group-hover:block min-w-[200px] z-50">
-        ${div.servicios.map(s => `
-          <li><a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a></li>
-        `).join("")}
-      </ul>
+      <div class="cursor-pointer px-4 py-2 hover:bg-gray-800 text-white whitespace-nowrap">
+        ${div.division}
+      </div>
+      ${
+        hasServicios
+          ? `<ul class="absolute left-full top-0 ml-2 bg-black text-white rounded-md shadow-lg hidden group-hover:block min-w-[200px] z-50">
+              ${div.servicios.map(s => `
+                <li>
+                  <a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a>
+                </li>
+              `).join("")}
+            </ul>`
+          : ""
+      }
     `;
 
     menuDivisiones.appendChild(li);
   });
 }
+
 
 function toggleLangMenuMobile() {
   const menu = document.getElementById("lang-menu-mobile");
