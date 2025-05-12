@@ -7,20 +7,22 @@
     <ul class="flex items-center gap-6 text-white font-medium">
       <li><a href="index.html" data-i18n="inicio" class="hover:text-blue-400 transition">Inicio</a></li>
 
-      <!-- Divisiones Dropdown -->
-      <li class="relative group">
-        <span class="cursor-pointer hover:text-blue-400 transition" data-i18n="divisiones">Divisiones</span>
-        <ul class="absolute left-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 min-w-[200px]">
-          <li><a href="divisiones/datacenter.html" class="block px-4 py-2 text-white hover:bg-gray-800 hover:text-blue-400" data-i18n="datacenter">Datacenter</a></li>
-          <li><a href="divisiones/tuneleria.html" class="block px-4 py-2 text-white hover:bg-gray-800 hover:text-blue-400" data-i18n="tuneleria">Tunelería Vial</a></li>
-          <li><a href="divisiones/mineria.html" class="block px-4 py-2 text-white hover:bg-gray-800 hover:text-blue-400" data-i18n="mineria">Minería Subterránea</a></li>
-          <li><a href="divisiones/electricidad.html" class="block px-4 py-2 text-white hover:bg-gray-800 hover:text-blue-400" data-i18n="electricidad">Electricidad</a></li>
+       <!-- Menú en pantallas grandes -->
+    <ul id="main-menu" class="hidden md:flex items-center gap-6 font-medium text-white">
+      <li><a href="index.html" data-i18n="inicio" class="hover:text-blue-400 transition">Inicio</a></li>
+
+      <!-- Divisiones (Mega menú) -->
+      <li class="relative group hidden md:block">
+        <span class="cursor-pointer text-white px-4 py-2 hover:text-blue-400 transition" data-i18n="divisiones">Divisiones</span>
+        <ul id="menu-divisiones" class="absolute left-0 top-full bg-black text-white mt-2 rounded-lg shadow-lg hidden group-hover:block z-50 min-w-[250px]">
+          <!-- Aquí se insertan divisiones y servicios desde JS -->
         </ul>
       </li>
 
       <li><a href="about.html" class="hover:text-blue-400 transition" data-i18n="quienes_somos">Quiénes somos</a></li>
       <li><a href="trabaja-con-nosotros.html" class="hover:text-blue-400 transition" data-i18n="trabaja">Trabaja con nosotros</a></li>
       <li><a href="contacto.html" class="hover:text-blue-400 transition" data-i18n="contacto">Contacto</a></li>
+
 
       <!-- Idioma selector -->
       <li class="relative group">
@@ -35,8 +37,46 @@
       </li>
     </ul>
   </nav>
+<!-- Menú móvil -->
+    <div class="flex items-center md:hidden">
+      <button id="menu-toggle" class="text-white text-2xl mr-4">☰</button>
+      <!-- Selector de idioma para móviles -->
+<div class="relative group md:hidden">
+  <img id="lang-flag-mobile" src="images/flags/es.svg" alt="ES" class="w-5 h-5 cursor-pointer">
+  <ul class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg hidden group-hover:block z-50 w-40">
+    <li onclick="setLanguage('en')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
+      <img src="images/flags/gb.svg" class="w-5 h-5"> Inglés
+    </li>
+    <li onclick="setLanguage('de')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
+      <img src="images/flags/de.svg" class="w-5 h-5"> Alemán
+    </li>
+    <li onclick="setLanguage('es')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
+      <img src="images/flags/es.svg" class="w-5 h-5"> Español
+    </li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <!-- Menú desplegable móvil -->
+  <div id="mobile-menu" class="md:hidden hidden bg-black text-white px-6 py-4 space-y-2">
+    <a href="index.html" class="block py-2" data-i18n="inicio">Inicio</a>
+    <a href="about.html" class="block py-2" data-i18n="quienes_somos">Quiénes somos</a>
+    <a href="trabaja-con-nosotros.html" class="block py-2" data-i18n="trabaja">Trabaja con nosotros</a>
+    <a href="contacto.html" class="block py-2" data-i18n="contacto">Contacto</a>
+  </div>
 
    <!-- Script idioma -->
   <script src="js/i18n.js"></script>
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
 
+      toggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    });
+  </script>
 </header>
