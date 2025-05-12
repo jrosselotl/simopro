@@ -113,12 +113,13 @@ function renderVista() {
   data.forEach(div => {
     const divWrap = document.createElement("div");
     divWrap.className = "mb-4";
-    divWrap.innerHTML = `<h4 class="font-semibold text-black">${div.division}</h4><ul class="ml-4 list-disc"></ul>`;
+    divWrap.innerHTML = `<h4 class="font-semibold text-black cursor-pointer" data-slug="${div.slug}" onclick="editarNombre(this, 'division')">${div.division}</h4><ul class="ml-4 list-disc"></ul>`;
     const ul = divWrap.querySelector("ul");
     div.servicios.forEach(serv => {
       const li = document.createElement("li");
-      li.className = "text-black";
-      li.textContent = serv.nombre;
+      li.className = "text-black cursor-pointer";
+li.setAttribute("data-slug", serv.slug);
+li.setAttribute("onclick", `editarNombre(this, 'servicio', '${div.slug}')`);
       ul.appendChild(li);
     });
     vista.appendChild(divWrap);
@@ -132,4 +133,28 @@ window.agregarServicio = agregarServicio;
 window.renderVista = renderVista;
 window.saveDivisiones = saveDivisiones;
 window.getDivisiones = getDivisiones;
-window.actualizarSelectorDivisiones = actualizarSelec
+window.actualizarSelectorDivisiones = actualizarSelectorDivisiones;
+
+
+function editarNombre(element, tipo, divisionSlug = null) {
+  const nuevo = prompt("Editar nombre:", element.textContent.trim());
+  if (!nuevo) return;
+  const data = getDivisiones();
+  const slug = slugify(nuevo);
+
+  if (tipo === "division") {
+    const division = data.find(d => d.slug === element.dataset.slug);
+    if (!division) return;
+    division.division = nuevo;
+    division.slug = slug;
+  } else if (tipo === "servicio") {
+    const division = data.find(d => d.slug === divisionSlug);
+    if (!division) return;
+    const servicio = division.servicios.find(s => s.slug === element.dataset.slug);
+    if (!servicio) return;
+    servicio.nombre = nuevo;
+    servicio.slug = slug;
+  }
+
+  saveDivisiones(data);
+}
