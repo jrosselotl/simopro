@@ -196,7 +196,12 @@ fetch("header.html")
       document.body.insertBefore(header, document.body.firstChild);
     }
   });
-
+  // Cargar footer normalmente
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
 
   const script = document.createElement("script");
     script.src = "js/i18n.js";
@@ -209,12 +214,7 @@ fetch("header.html")
     document.body.appendChild(script);
   });
 
-  // Cargar footer normalmente
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
+
 </script>
 
   <!-- Footer dinámico -->
