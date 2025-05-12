@@ -220,16 +220,6 @@ fetch("header.html")
   <!-- Footer dinámico -->
   <div id="footer-container"></div>
 
-  <!-- Carga de componentes comunes -->
-  <script>
-    fetch('header.html').then(res => res.text()).then(data => {
-      document.getElementById('header-container').innerHTML = data;
-    });
-    fetch('footer.html').then(res => res.text()).then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-  </script>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
