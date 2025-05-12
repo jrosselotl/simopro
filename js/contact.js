@@ -41,21 +41,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // Cargar servicios padre e hijo en el <select>
-const servicioSelect = document.getElementById("servicio");
-const serviciosGuardados = JSON.parse(localStorage.getItem("servicios"));
+document.addEventListener("DOMContentLoaded", () => {
+  const divSelect = document.getElementById("formDivision");
+  const servSelect = document.getElementById("formServicio");
 
-if (servicioSelect && serviciosGuardados) {
-  Object.entries(serviciosGuardados).forEach(([padre, hijos]) => {
-    const group = document.createElement("optgroup");
-    group.label = padre;
+  const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
 
-    hijos.forEach(hijo => {
-      const option = document.createElement("option");
-      option.value = `${padre} - ${hijo}`;
-      option.textContent = hijo;
-      group.appendChild(option);
+  function cargarDivisiones() {
+    divSelect.innerHTML = "<option value=''>Selecciona una división</option>";
+    data.forEach(d => {
+      const opt = document.createElement("option");
+      opt.value = d.slug;
+      opt.textContent = d.division;
+      divSelect.appendChild(opt);
     });
+  }
 
-    servicioSelect.appendChild(group);
+  function cargarServicios(slug) {
+    servSelect.innerHTML = "<option value=''>Selecciona un servicio</option>";
+    const division = data.find(d => d.slug === slug);
+    if (!division) return;
+    division.servicios.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s.slug;
+      opt.textContent = s.nombre;
+      servSelect.appendChild(opt);
+    });
+  }
+
+  divSelect.addEventListener("change", () => {
+    const selected = divSelect.value;
+    cargarServicios(selected);
   });
-}
+
+  cargarDivisiones();
+});
