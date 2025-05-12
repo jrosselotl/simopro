@@ -212,4 +212,65 @@ function renderVista() {
     });
   });
 }
+function slugify(text) {
+  return text.toString().toLowerCase().trim().replace(/\\s+/g, '-').replace(/[^\\w\\-]+/g, '');
+}
+
+function getDivisiones() {
+  return JSON.parse(localStorage.getItem("simopro_servicios")) || [];
+}
+
+function saveDivisiones(data) {
+  localStorage.setItem("simopro_servicios", JSON.stringify(data));
+  renderVista();
+  actualizarSelectorDivisiones();
+}
+
+function agregarDivision() {
+  const nombre = document.getElementById("divisionNombre").value.trim();
+  if (!nombre) return;
+
+  const data = getDivisiones();
+  const slug = slugify(nombre);
+
+  if (data.some(d => d.slug === slug)) {
+    alert("La división ya existe.");
+    return;
+  }
+
+  data.push({ division: nombre, slug, servicios: [] });
+  saveDivisiones(data);
+  document.getElementById("divisionNombre").value = "";
+}
+
+function agregarServicio() {
+  const divisionSlug = document.getElementById("selectDivision").value;
+  const nombre = document.getElementById("servicioNombre").value.trim();
+  if (!divisionSlug || !nombre) return;
+
+  const data = getDivisiones();
+  const slug = slugify(nombre);
+  const division = data.find(d => d.slug === divisionSlug);
+
+  if (!division.servicios.some(s => s.slug === slug)) {
+    division.servicios.push({ nombre, slug });
+    saveDivisiones(data);
+    document.getElementById("servicioNombre").value = "";
+  } else {
+    alert("Este servicio ya existe en esa división.");
+  }
+}
+
+function actualizarSelectorDivisiones() {
+  const data = getDivisiones();
+  const select = document.getElementById("selectDivision");
+  if (!select) return;
+  select.innerHTML = "";
+  data.forEach(d => {
+    const opt = document.createElement("option");
+    opt.value = d.slug;
+    opt.textContent = d.division;
+    select.appendChild(opt);
+  });
+}
 
