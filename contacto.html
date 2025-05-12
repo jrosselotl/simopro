@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/styles.css"
 </head>
 <body class="bg-black text-white font-inter">
-  <div id="header-placeholder"></div>
+  <div id="header-container"></div>
 
   <main class="max-w-4xl mx-auto p-6 bg-gray-900 text-white shadow-xl mt-12 rounded animate__animated animate__fadeIn">
     <h1 class="text-3xl font-bold mb-6 text-center">Contáctanos</h1>
@@ -27,12 +27,16 @@
         <input type="text" name="pais" placeholder="País*" class="bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 rounded px-4 py-2 w-full">
         <input type="text" name="compania" placeholder="Compañía (opcional)" class="bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 rounded px-4 py-2 w-full">
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-     <label for="division">División:</label>
-<select id="formDivision" class="bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 rounded px-4 py-2 w-full"></select>
-
-<label for="servicio">Servicio:</label>
-<select id="formServicio" class="bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 rounded px-4 py-2 w-full"></select>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div>
+    <label for="formDivision" class="block mb-1 text-sm">División:</label>
+    <select id="formDivision" class="bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 rounded px-4 py-2 w-full"></select>
+  </div>
+  <div>
+    <label for="formServicio" class="block mb-1 text-sm">Servicio:</label>
+    <select id="formServicio" class="bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 rounded px-4 py-2 w-full"></select>
+  </div>
+</div>
 
         
       </div>
@@ -56,7 +60,7 @@
     </form>
   </main>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-container"></div>
 
   <script>
     document.querySelectorAll('.input').forEach(input => {
