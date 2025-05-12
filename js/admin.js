@@ -1,5 +1,4 @@
 
-// ========== SLIDER / HERO LOGIC ==========
 document.addEventListener("DOMContentLoaded", function () {
   const sliderContainer = document.getElementById("slider-container");
   const addSlideBtn = document.getElementById("add-slide-btn");
@@ -42,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   renderSlides();
+  renderVista();
+  actualizarSelectorDivisiones();
 });
 
 // ========== DIVISIONES Y SERVICIOS ==========
