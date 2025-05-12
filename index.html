@@ -210,43 +210,14 @@
     });
   </script>
   <script>
-  // Cargar dinámicamente el header
-  fetch('header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('header-container').innerHTML = data;
-
-      // ⚠️ Cargar el script manualmente para que setLanguage esté disponible
-      const script = document.createElement('script');
-      script.src = 'js/i18n.js';
-      script.onload = () => {
-        const defaultLang = localStorage.getItem('lang') || 'es';
-        setLanguage(defaultLang);
-      };
-      document.body.appendChild(script);
-    });
-
-  // Cargar footer normalmente
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-</script>
-<script>
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
-      window.dispatchEvent(new Event("scroll"));
-    }, 300); // se asegura que Swiper esté pintado y el scroll detectado
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      window.scrollBy(0, 1);  // baja 1 pixel
-      window.scrollBy(0, -1); // vuelve arriba, pero dispara scroll
+      window.scrollBy(0, 1);
+      window.scrollBy(0, -1);
+      window.dispatchEvent(new Event("scroll")); // Swiper se actualiza
     }, 400);
   });
 </script>
+
 </body>
 </html>
