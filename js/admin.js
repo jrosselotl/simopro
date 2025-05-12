@@ -136,7 +136,8 @@ function renderVista() {
       li.appendChild(btn);
       ul.appendChild(li);
     });
-
+    divWrap.appendChild(title);
+    divWrap.appendChild(ul);
     vista.appendChild(divWrap);
   });
 }
