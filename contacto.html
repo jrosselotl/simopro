@@ -64,33 +64,40 @@
     </form>
   </main>
 
-  <div id="footer-container"></div>
+<!-- Footer dinámico -->
+<div id="footer-container"></div>
 
-  <script>
-    document.querySelectorAll('.input').forEach(input => {
-      input.classList.add(
-        'w-full', 'p-3', 'border', 'border-gray-300', 'rounded', 'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-400'
-      );
-    });
-  </script>
-    <script defer src="js/contact.js"></script>
+<!-- Carga de header.js, i18n.js, y lógica adicional -->
+<script src="js/header.js" defer></script>
+<script src="js/i18n.js" defer></script>
+
 <script>
-  fetch('header.html').then(res => res.text()).then(data => {
-    document.getElementById('header-container').innerHTML = data;
+  // Cargar el footer desde archivo externo
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
 
-    const script = document.createElement('script');
-    script.src = 'js/i18n.js';
-    script.onload = () => {
-      const defaultLang = localStorage.getItem('lang') || 'es';
-      setLanguage(defaultLang);
-    };
-    document.body.appendChild(script);
+  // Forzar scroll para activar sticky header
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      window.scrollBy(0, 1);
+      window.scrollBy(0, -1);
+    }, 400);
   });
 
-  fetch('footer.html').then(res => res.text()).then(data => {
-    document.getElementById('footer-container').innerHTML = data;
+  // Reaplicar idioma una vez esté cargado todo
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const lang = localStorage.getItem("lang") || "es";
+      if (typeof setLanguage === "function") {
+        setLanguage(lang);
+      }
+    }, 500);
   });
 </script>
+
 </body>
 </html>
 
