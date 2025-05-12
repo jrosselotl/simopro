@@ -3,7 +3,7 @@ function cargarMenuDinamico() {
   const menuDivisiones = document.getElementById("menu-divisiones");
   if (!menuDivisiones) return;
 
-  menuDivisiones.innerHTML = ""; // Limpiar el menú
+  menuDivisiones.innerHTML = "";
 
   data.forEach(div => {
     const li = document.createElement("li");
@@ -12,25 +12,26 @@ function cargarMenuDinamico() {
     const hasServicios = div.servicios && div.servicios.length > 0;
 
     li.innerHTML = `
-      <div class="cursor-pointer px-4 py-2 hover:bg-gray-800 text-white whitespace-nowrap">
+      <div class="cursor-pointer px-4 py-2 hover:bg-gray-800 text-white whitespace-nowrap group">
         ${div.division}
+        ${
+          hasServicios
+            ? `<ul class="absolute left-0 top-full mt-1 bg-black text-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 min-w-[200px]">
+                ${div.servicios.map(s => `
+                  <li>
+                    <a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a>
+                  </li>
+                `).join("")}
+              </ul>`
+            : ""
+        }
       </div>
-      ${
-        hasServicios
-          ? `<ul class="absolute left-full top-0 ml-2 bg-black text-white rounded-md shadow-lg hidden group-hover:block min-w-[200px] z-50">
-              ${div.servicios.map(s => `
-                <li>
-                  <a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a>
-                </li>
-              `).join("")}
-            </ul>`
-          : ""
-      }
     `;
 
     menuDivisiones.appendChild(li);
   });
 }
+
 
 
 function toggleLangMenuMobile() {
