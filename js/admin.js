@@ -43,7 +43,85 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderSlides();
 });
+function mostrarSeccion(id) {
+  const secciones = ['crear-division', 'crear-servicio'];
+  secciones.forEach(sec => {
+    const el = document.getElementById(sec);
+    if (el) el.classList.add('hidden');
+  });
+  const activa = document.getElementById(id);
+  if (activa) activa.classList.remove('hidden');
+}
 
+function slugify(text) {
+  return text.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+}
+
+function getDivisiones() {
+  return JSON.parse(localStorage.getItem("simopro_servicios")) || [];
+}
+
+function saveDivisiones(data) {
+  localStorage.setItem("simopro_servicios", JSON.stringify(data));
+  renderVista();
+  actualizarSelectorDivisiones();
+}
+
+function agregarDivision() {
+  const nombre = document.getElementById("divisionNombre").value.trim();
+  if (!nombre) return;
+  const slug = slugify(nombre);
+  const data = getDivisiones();
+  if (data.some(d => d.slug === slug)) return alert("Ya existe esa división");
+  data.push({ division: nombre, slug, servicios: [] });
+  saveDivisiones(data);
+  document.getElementById("divisionNombre").value = "";
+}
+
+function agregarServicio() {
+  const divisionSlug = document.getElementById("selectDivision").value;
+  const nombre = document.getElementById("servicioNombre").value.trim();
+  const slug = slugify(nombre);
+  const data = getDivisiones();
+  const division = data.find(d => d.slug === divisionSlug);
+  if (!division || division.servicios.some(s => s.slug === slug)) return;
+  division.servicios.push({ nombre, slug });
+  saveDivisiones(data);
+  document.getElementById("servicioNombre").value = "";
+}
+
+function actualizarSelectorDivisiones() {
+  const data = getDivisiones();
+  const select = document.getElementById("selectDivision");
+  if (!select) return;
+  select.innerHTML = "";
+  data.forEach(d => {
+    const opt = document.createElement("option");
+    opt.value = d.slug;
+    opt.textContent = d.division;
+    select.appendChild(opt);
+  });
+}
+
+function renderVista() {
+  const data = getDivisiones();
+  const vista = document.getElementById("jsonPreview");
+  if (!vista) return;
+  vista.innerHTML = "";
+  data.forEach(div => {
+    const divWrap = document.createElement("div");
+    divWrap.className = "mb-4";
+    divWrap.innerHTML = `<h4 class="font-semibold text-black">${div.division}</h4><ul class="ml-4 list-disc"></ul>`;
+    const ul = divWrap.querySelector("ul");
+    div.servicios.forEach(serv => {
+      const li = document.createElement("li");
+      li.className = "text-black";
+      li.textContent = serv.nombre;
+      ul.appendChild(li);
+    });
+    vista.appendChild(divWrap);
+  });
+}
 window.mostrarSeccion = mostrarSeccion;
 window.agregarDivision = agregarDivision;
 window.eliminarDivision = eliminarDivision;
