@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Espera a que el DOM tenga el header
       setTimeout(() => {
+        cargarMenuDinamico();
         const header = document.querySelector("header#main-header");
         if (!header) return;
 
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         handleScroll(); // verificar estado actual
         window.addEventListener("scroll", handleScroll);
-        cargarMenuDinamico();
+        
       }, 500); // asegura que el header esté renderizado
     })
     .catch(error => console.error("Error al cargar header:", error));
