@@ -110,21 +110,44 @@ function renderVista() {
   const vista = document.getElementById("jsonPreview");
   if (!vista) return;
   vista.innerHTML = "";
+
   data.forEach(div => {
     const divWrap = document.createElement("div");
     divWrap.className = "mb-4";
     divWrap.innerHTML = `<h4 class="font-semibold text-black cursor-pointer" data-slug="${div.slug}" onclick="editarNombre(this, 'division')">${div.division}</h4><ul class="ml-4 list-disc"></ul>`;
+
     const ul = divWrap.querySelector("ul");
+
     div.servicios.forEach(serv => {
       const li = document.createElement("li");
-      li.className = "text-black cursor-pointer";
-li.setAttribute("data-slug", serv.slug);
-li.setAttribute("onclick", `editarNombre(this, 'servicio', '${div.slug}')`);
+      li.className = "text-black cursor-pointer flex justify-between items-center";
+      li.setAttribute("data-slug", serv.slug);
+      li.setAttribute("onclick", `editarNombre(this, 'servicio', '${div.slug}')`);
       li.textContent = serv.nombre;
+
+      const btn = document.createElement("button");
+      btn.className = "text-red-600 ml-4 font-bold";
+      btn.textContent = "✕";
+      btn.onclick = (e) => {
+        e.stopPropagation(); // evitar que dispare editarNombre()
+        eliminarServicio(serv.slug, div.slug);
+      };
+
+      li.appendChild(btn);
       ul.appendChild(li);
     });
+
     vista.appendChild(divWrap);
   });
+}
+function eliminarServicio(servSlug, divSlug) {
+  const data = getDivisiones();
+  const division = data.find(d => d.slug === divSlug);
+  if (!division) return;
+  const confirmar = confirm("¿Estás seguro de que deseas eliminar este servicio?");
+  if (!confirmar) return;
+  division.servicios = division.servicios.filter(s => s.slug !== servSlug);
+  saveDivisiones(data);
 }
 
 // Exportar al scope global
