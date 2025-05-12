@@ -160,4 +160,56 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarSeccion('crear-division');
 });
 
+function renderVista() {
+  const data = getDivisiones();
+  const vista = document.getElementById("jsonPreview");
+  if (!vista) return;
+  vista.innerHTML = "";
+
+  data.forEach(div => {
+    const divWrap = document.createElement("div");
+    divWrap.className = "mb-6";
+
+    const divHeader = document.createElement("div");
+    divHeader.className = "flex justify-between items-center bg-blue-100 text-black p-2 rounded";
+    divHeader.innerHTML = `
+      <span class="font-bold cursor-pointer" data-slug="${div.slug}" onclick="editarNombre(this, 'division')">${div.division}</span>
+      <button onclick="eliminarDivision('${div.slug}')" class="text-red-500 hover:text-red-700">Eliminar</button>
+    `;
+    divWrap.appendChild(divHeader);
+
+    const ul = document.createElement("ul");
+    ul.id = `sortable-${div.slug}`;
+    ul.className = "pl-4 mt-2 list-disc space-y-1";
+
+    div.servicios.forEach(serv => {
+      const li = document.createElement("li");
+      li.className = "flex justify-between items-center bg-gray-100 text-black px-2 py-1 rounded";
+      li.dataset.slug = serv.slug;
+      li.innerHTML = `
+        <span class="cursor-pointer" data-slug="${serv.slug}" onclick="editarNombre(this, 'servicio', '${div.slug}')">${serv.nombre}</span>
+        <button onclick="eliminarServicio('${div.slug}', '${serv.slug}')" class="text-red-500 hover:text-red-700 text-sm">x</button>
+      `;
+      ul.appendChild(li);
+    });
+
+    divWrap.appendChild(ul);
+    vista.appendChild(divWrap);
+
+    // Activar drag-and-drop con SortableJS
+    new Sortable(ul, {
+      animation: 150,
+      onEnd: function () {
+        const nuevosServicios = [];
+        ul.querySelectorAll("li").forEach(li => {
+          const slug = li.dataset.slug;
+          const servicio = div.servicios.find(s => s.slug === slug);
+          if (servicio) nuevosServicios.push(servicio);
+        });
+        div.servicios = nuevosServicios;
+        saveDivisiones(data);
+      }
+    });
+  });
+}
 
