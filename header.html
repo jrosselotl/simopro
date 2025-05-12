@@ -1,9 +1,7 @@
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-300">
   <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <!-- Logo -->
+    <!-- Menú escritorio -->
     <a href="index.html" class="text-white font-bold text-xl">SIMOpro</a>
-
-    <!-- Navegación -->
     <ul id="main-menu" class="hidden md:flex items-center gap-6 text-white font-medium">
       <li><a href="index.html" data-i18n="inicio" class="hover:text-blue-400 transition">Inicio</a></li>
 
@@ -19,59 +17,66 @@
       <li><a href="trabaja-con-nosotros.html" class="hover:text-blue-400 transition" data-i18n="trabaja">Trabaja con nosotros</a></li>
       <li><a href="contacto.html" class="hover:text-blue-400 transition" data-i18n="contacto">Contacto</a></li>
 
-
-      <!-- Idioma selector -->
+      <!-- Selector de idioma escritorio -->
       <li class="relative group">
         <span class="cursor-pointer flex items-center gap-1">
-  <img id="lang-flag" src="images/flags/es.svg" alt="ES" class="w-5 h-5">
-</span>
-        <ul class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 overflow-visible w-40">
+          <img id="lang-flag" src="images/flags/es.svg" alt="ES" class="w-5 h-5">
+        </span>
+        <ul class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 w-40">
           <li onclick="setLanguage('en')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/gb.svg" class="w-5 h-5"> Inglés</li>
           <li onclick="setLanguage('de')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/de.svg" class="w-5 h-5"> Alemán</li>
           <li onclick="setLanguage('es')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer"><img src="images/flags/es.svg" class="w-5 h-5"> Español</li>
         </ul>
       </li>
     </ul>
-  </nav>
-<!-- Menú móvil -->
+
+    <!-- Menú móvil: logo + hamburguesa + idioma -->
     <div class="flex items-center justify-between gap-4 md:hidden w-full px-6">
-  <a href="index.html" class="text-white font-bold text-xl">SIMOpro</a>
-
-  <div class="flex items-center gap-4">
-    <button id="menu-toggle" class="text-white text-2xl">☰</button>
-    <div class="relative">
-      <img id="lang-flag-mobile" src="images/flags/es.svg" alt="ES" class="w-5 h-5 cursor-pointer" onclick="toggleLangMenuMobile()">
-      <ul id="lang-menu-mobile" class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg hidden z-50 w-40">
-        <li onclick="setLanguage('en')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
-          <img src="images/flags/gb.svg" class="w-5 h-5"> Inglés
-        </li>
-        <li onclick="setLanguage('de')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
-          <img src="images/flags/de.svg" class="w-5 h-5"> Alemán
-        </li>
-        <li onclick="setLanguage('es')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
-          <img src="images/flags/es.svg" class="w-5 h-5"> Español
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
+      <a href="index.html" class="text-white font-bold text-xl">SIMOpro</a>
+      <div class="flex items-center gap-4">
+        <button id="menu-toggle" class="text-white text-2xl">☰</button>
+        <div class="relative">
+          <img id="lang-flag-mobile" src="images/flags/es.svg" alt="ES" class="w-5 h-5 cursor-pointer" onclick="toggleLangMenuMobile()">
+          <ul id="lang-menu-mobile" class="absolute right-0 mt-2 bg-black text-white rounded-md shadow-lg hidden z-50 w-40">
+            <li onclick="setLanguage('en')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
+              <img src="images/flags/gb.svg" class="w-5 h-5"> Inglés
+            </li>
+            <li onclick="setLanguage('de')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
+              <img src="images/flags/de.svg" class="w-5 h-5"> Alemán
+            </li>
+            <li onclick="setLanguage('es')" class="px-4 py-2 hover:bg-gray-800 flex items-center gap-2 cursor-pointer">
+              <img src="images/flags/es.svg" class="w-5 h-5"> Español
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
 
- 
+  <!-- Contenido del menú móvil desplegable -->
+  <div id="mobile-menu" class="md:hidden hidden bg-black text-white px-6 py-4 space-y-2">
+    <a href="index.html" class="block py-2" data-i18n="inicio">Inicio</a>
+    <a href="about.html" class="block py-2" data-i18n="quienes_somos">Quiénes somos</a>
+    <a href="trabaja-con-nosotros.html" class="block py-2" data-i18n="trabaja">Trabaja con nosotros</a>
+    <a href="contacto.html" class="block py-2" data-i18n="contacto">Contacto</a>
+  </div>
 
-   <!-- Script idioma -->
+  <!-- Script idioma -->
   <script src="js/i18n.js"></script>
- <script>
+  <script>
+    function toggleLangMenuMobile() {
+      const menu = document.getElementById("lang-menu-mobile");
+      if (menu) menu.classList.toggle("hidden");
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       const toggle = document.getElementById("menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
-
-      toggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
+      if (toggle && mobileMenu) {
+        toggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
     });
   </script>
 </header>
