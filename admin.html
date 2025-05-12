@@ -20,32 +20,45 @@
   <!-- Sidebar -->
   <aside class="fixed top-0 left-0 w-64 h-full bg-blue-700 text-white p-6">
     <h1 class="text-2xl font-bold mb-8">SIMOpro Admin</h1>
-    <nav class="flex flex-col gap-4">
-      <button onclick="showCarouselEditor()" class="w-full text-left p-4 hover:bg-blue-600">Editar Sliders</button>
-    </nav>
+ <nav class="flex flex-col gap-4">
+  <button onclick="showCarouselEditor()" class="w-full text-left p-4 hover:bg-blue-600">Editar Sliders</button>
+  <button onclick="mostrarSeccion('crear-division')" class="w-full text-left p-4 hover:bg-blue-600">Crear División</button>
+  <button onclick="mostrarSeccion('crear-servicio')" class="w-full text-left p-4 hover:bg-blue-600">Asignar Servicios</button>
+</nav>
+
   </aside>
-<section id="servicios" class="my-6 px-4">
-  <h2 class="text-xl font-bold mb-4">Gestión de Servicios</h2>
-
-  <div class="mb-4">
-    <label for="servicio-padre" class="block mb-1 font-semibold">Servicio Padre</label>
-    <input type="text" id="servicio-padre" class="w-full border rounded px-2 py-1">
-  </div>
-
-  <div class="mb-4">
-    <label for="servicio-hijo" class="block mb-1 font-semibold">Servicio Hijo</label>
-    <input type="text" id="servicio-hijo" class="w-full border rounded px-2 py-1">
-  </div>
-
-  <button id="agregar-servicio" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-    Agregar Servicio
-  </button>
-
-  <p id="servicio-msg" class="text-sm mt-2"></p>
 </section>
   <!-- Main content -->
   <main class="ml-64 p-8">
     <div id="admin-content" class="space-y-8"></div>
+    <!-- Crear División -->
+<section id="crear-division" class="hidden">
+  <h2 class="text-xl font-bold mb-4">Crear División</h2>
+  <div class="bg-white p-4 rounded shadow">
+    <label class="block mb-2">Nombre de la división:</label>
+    <input type="text" id="divisionNombre" class="w-full p-2 border rounded mb-2" placeholder="Ej: Data Center">
+    <button onclick="agregarDivision()" class="bg-blue-600 text-white px-4 py-2 rounded">Agregar División</button>
+  </div>
+</section>
+
+<!-- Crear y Asignar Servicios -->
+<section id="crear-servicio" class="hidden mt-10">
+  <h2 class="text-xl font-bold mb-4">Crear y Asignar Servicios</h2>
+  <div class="bg-white p-4 rounded shadow mb-4">
+    <label class="block mb-2">Selecciona división:</label>
+    <select id="selectDivision" class="w-full p-2 border rounded mb-2"></select>
+
+    <label class="block mb-2">Nombre del servicio:</label>
+    <input type="text" id="servicioNombre" class="w-full p-2 border rounded mb-2" placeholder="Ej: CFD pasillos">
+    <button onclick="agregarServicio()" class="bg-blue-600 text-white px-4 py-2 rounded">Agregar Servicio</button>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-semibold mb-2">Servicios por división:</h3>
+    <pre id="jsonPreview" class="bg-gray-100 p-3 rounded text-sm overflow-x-auto"></pre>
+  </div>
+</section>
+
   </main>
 
   <!-- Librerías JS -->
