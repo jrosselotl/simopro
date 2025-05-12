@@ -30,3 +30,30 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => console.error("Error al cargar header:", error));
 });
+function cargarMenuDinamico() {
+  const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
+
+  const menuDivisiones = document.getElementById("menu-divisiones");
+
+  if (!menuDivisiones) return;
+
+  menuDivisiones.innerHTML = ""; // limpiar antes de poblar
+
+  data.forEach(div => {
+    const li = document.createElement("li");
+    li.className = "relative group";
+
+    li.innerHTML = \`
+      <span class="cursor-pointer flex items-center gap-1 px-4 py-2 hover:bg-gray-800">\${div.division}</span>
+      <ul class="absolute left-0 top-full mt-1 bg-black text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transform transition duration-300 z-50 min-w-[200px]">
+        \${div.servicios.map(s => \`
+          <li><a href="servicios/\${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800">\${s.nombre}</a></li>
+        \`).join("")}
+      </ul>
+    \`;
+
+    menuDivisiones.appendChild(li);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", cargarMenuDinamico);
