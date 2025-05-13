@@ -32,24 +32,34 @@ function cargarMenuDinamico() {
   // 📱 MENÚ MÓVIL (Acordeón clic por división)
   const mobileDivisiones = document.getElementById("mobile-divisiones");
   if (mobileDivisiones) {
-    mobileDivisiones.innerHTML = "";
-    data.forEach((div, index) => {
-      const container = document.createElement("div");
-      container.className = "text-white";
+    mobileDivisiones.innerHTML = `
+  <button class="w-full text-left font-semibold py-2" onclick="document.getElementById('dropdown-divisiones').classList.toggle('hidden')">
+    Divisiones
+    <span class="float-right">▼</span>
+  </button>
+  <div id="dropdown-divisiones" class="hidden pl-2 space-y-2"></div>
+`;
 
-      const idServicios = `mobile-sub-${index}`;
-      container.innerHTML = `
-        <button class="w-full text-left font-semibold py-2" onclick="document.getElementById('${idServicios}').classList.toggle('hidden')">
-          ${div.division}
-        </button>
-        <div id="${idServicios}" class="hidden pl-4">
-          ${(div.servicios || []).map(s => `
-            <a href="servicios/${s.slug}.html" class="block py-1 text-sm text-gray-300 hover:text-blue-400">${s.nombre}</a>
-          `).join("")}
-        </div>
-      `;
-      mobileDivisiones.appendChild(container);
-    });
+const dropdownContainer = document.getElementById("dropdown-divisiones");
+
+data.forEach((div, index) => {
+  const container = document.createElement("div");
+  container.className = "text-white";
+
+  const idServicios = `mobile-sub-${index}`;
+  container.innerHTML = `
+    <button class="w-full text-left font-medium py-2" onclick="document.getElementById('${idServicios}').classList.toggle('hidden')">
+      ${div.division}
+    </button>
+    <div id="${idServicios}" class="hidden pl-4">
+      ${(div.servicios || []).map(s => `
+        <a href="servicios/${s.slug}.html" class="block py-1 text-sm text-gray-300 hover:text-blue-400">${s.nombre}</a>
+      `).join("")}
+    </div>
+  `;
+
+  dropdownContainer.appendChild(container);
+});
   }
 }
 
