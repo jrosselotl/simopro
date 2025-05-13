@@ -46,7 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
 
-  selectDivision.innerHTML = "";
+  // Inicializar selects con opción por defecto
+  selectDivision.innerHTML = '<option value="">Seleccionar</option>';
+  selectServicio.innerHTML = '<option value="">Seleccionar</option>';
+
+  // Agregar divisiones
   data.forEach(div => {
     const opt = document.createElement("option");
     opt.value = div.slug;
@@ -54,9 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
     selectDivision.appendChild(opt);
   });
 
+  // Al seleccionar una división, cargar sus servicios
   selectDivision.addEventListener("change", () => {
     const selected = data.find(d => d.slug === selectDivision.value);
-    selectServicio.innerHTML = "";
+    selectServicio.innerHTML = '<option value="">Seleccionar</option>';
     selected?.servicios.forEach(serv => {
       const opt = document.createElement("option");
       opt.value = serv.slug;
@@ -65,9 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Llenar servicios por defecto en la carga inicial
+  // Si ya hay divisiones, no se selecciona ninguna por defecto
   if (data.length > 0) {
-    selectDivision.value = data[0].slug;
-    selectDivision.dispatchEvent(new Event("change"));
+    selectDivision.value = "";
   }
 });
