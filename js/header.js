@@ -140,18 +140,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 document.addEventListener("DOMContentLoaded", () => {
-  const menuDivisionesWrapper = document.querySelector("#menu-divisiones").parentElement;
-  const menuDivisiones = document.getElementById("menu-divisiones");
+  const trigger = document.getElementById("desktop-div-trigger");
+  const menu = document.getElementById("menu-divisiones");
 
-  if (menuDivisiones && menuDivisionesWrapper) {
-    menuDivisionesWrapper.addEventListener("mouseenter", () => {
-      menuDivisiones.classList.remove("invisible", "opacity-0");
-      menuDivisiones.classList.add("visible", "opacity-100");
+  if (trigger && menu) {
+    // Mostrar al pasar mouse
+    trigger.addEventListener("mouseenter", () => {
+      menu.classList.remove("invisible", "opacity-0");
+      menu.classList.add("visible", "opacity-100");
     });
 
-    menuDivisionesWrapper.addEventListener("mouseleave", () => {
-      menuDivisiones.classList.add("invisible", "opacity-0");
-      menuDivisiones.classList.remove("visible", "opacity-100");
+    // Ocultar cuando el mouse sale del área completa
+    const container = document.getElementById("menu-desktop-divisiones");
+    container.addEventListener("mouseleave", () => {
+      menu.classList.add("invisible", "opacity-0");
+      menu.classList.remove("visible", "opacity-100");
     });
   }
 });
+
