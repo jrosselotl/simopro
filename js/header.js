@@ -117,3 +117,26 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => console.error("Error al cargar header:", error));
 });
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const trigger = document.getElementById("desktop-div-trigger");
+    const menu = document.getElementById("menu-divisiones");
+    let open = false;
+
+    if (trigger && menu) {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        open = !open;
+        menu.classList.toggle("hidden", !open);
+      });
+
+      // Cerrar al hacer clic fuera
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest("#menu-desktop-divisiones")) {
+          open = false;
+          menu.classList.add("hidden");
+        }
+      });
+    }
+  });
+</script>
