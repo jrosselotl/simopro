@@ -68,6 +68,13 @@
   <!-- Contenido del menú móvil desplegable -->
   <div id="mobile-menu" class="md:hidden hidden bg-black text-white px-6 py-4 space-y-2">
     <a href="index.html" class="block py-2" data-i18n="inicio">Inicio</a>
+    <!-- Divisiones (Mega menú) -->
+      <li class="relative group hidden md:block">
+        <span class="cursor-pointer text-white px-4 py-2 hover:text-blue-400 transition" data-i18n="divisiones">Divisiones</span>
+        <ul id="menu-divisiones" class="absolute left-0 top-full bg-black text-white mt-2 rounded-lg shadow-lg hidden group-hover:block z-50 min-w-[250px]">
+          <!-- Aquí se insertan divisiones y servicios desde JS -->
+        </ul>
+      </li>
     <a href="about.html" class="block py-2" data-i18n="quienes_somos">Quiénes somos</a>
     <a href="trabaja-con-nosotros.html" class="block py-2" data-i18n="trabaja">Trabaja con nosotros</a>
     <a href="contacto.html" class="block py-2" data-i18n="contacto">Contacto</a>
