@@ -89,14 +89,61 @@
       if (menu) menu.classList.toggle("hidden");
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggle = document.getElementById("menu-toggle");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (toggle && mobileMenu) {
-        toggle.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
+  document.addEventListener("DOMContentLoaded", () => {
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => {
+      if (!document.querySelector("header#main-header")) {
+        const temp = document.createElement("div");
+        temp.innerHTML = data;
+        document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
       }
-    });
-  </script>
-</header>
+
+      // Esperar a que se renderice el header y luego cargar
+      setTimeout(() => {
+        const header = document.querySelector("header#main-header");
+        if (!header) return;
+
+        cargarMenuDinamico();
+
+        // Activar toggle del mega menú escritorio
+        const trigger = document.getElementById("desktop-div-trigger");
+        const menu = document.getElementById("menu-divisiones");
+        const container = document.getElementById("menu-desktop-divisiones");
+
+        if (trigger && menu && container) {
+          let open = false;
+          trigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            open = !open;
+            menu.classList.toggle("invisible", !open);
+            menu.classList.toggle("opacity-0", !open);
+            menu.classList.toggle("visible", open);
+            menu.classList.toggle("opacity-100", open);
+          });
+
+          document.addEventListener("click", (e) => {
+            if (!container.contains(e.target)) {
+              open = false;
+              menu.classList.add("invisible", "opacity-0");
+              menu.classList.remove("visible", "opacity-100");
+            }
+          });
+        }
+
+        // Idioma
+        const lang = localStorage.getItem("lang") || "es";
+        if (typeof setLanguage === "function") setLanguage(lang);
+
+        // Menú móvil
+        const toggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (toggle && mobileMenu) {
+          toggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
+        }
+      }, 300); // esperar a que header esté en el DOM
+    })
+    .catch(error => console.error("Error al cargar header:", error));
+});
