@@ -5,20 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let slides = JSON.parse(localStorage.getItem("sliderData")) || [];
 
   function renderSlides() {
-    if (!sliderContainer) return;
     sliderContainer.innerHTML = "";
     slides.forEach((slide, index) => {
       const slideEl = document.createElement("div");
       slideEl.className = "p-4 mb-4 bg-white rounded shadow";
-      slideEl.innerHTML = \`
+      slideEl.innerHTML = `
         <label>Título:</label>
-        <input type="text" class="w-full p-2 border mb-2" value="\${slide.title}" onchange="updateSlide(\${index}, 'title', this.value)">
+        <input type="text" class="w-full p-2 border mb-2" value="${slide.title}" onchange="updateSlide(${index}, 'title', this.value)">
         <label>Texto:</label>
-        <input type="text" class="w-full p-2 border mb-2" value="\${slide.text}" onchange="updateSlide(\${index}, 'text', this.value)">
+        <input type="text" class="w-full p-2 border mb-2" value="${slide.text}" onchange="updateSlide(${index}, 'text', this.value)">
         <label>Imagen (URL):</label>
-        <input type="text" class="w-full p-2 border mb-2" value="\${slide.image}" onchange="updateSlide(\${index}, 'image', this.value)">
-        <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(\${index})">Eliminar</button>
-      \`;
+        <input type="text" class="w-full p-2 border mb-2" value="${slide.image}" onchange="updateSlide(${index}, 'image', this.value)">
+        <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(${index})">Eliminar</button>
+      `;
       sliderContainer.appendChild(slideEl);
     });
   }
@@ -41,26 +40,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   renderSlides();
-  renderVista();
-  actualizarSelectorDivisiones();
 });
 
-// ========== FUNCIONES GENERALES ==========
-window.mostrarSeccion = function (id) {
-  const secciones = ['crear-division', 'crear-servicio', 'crear-pagina-servicio'];
+// ========== DIVISIONES Y SERVICIOS ==========
+function mostrarSeccion(id) {
+  const secciones = ['crear-division', 'crear-servicio'];
   secciones.forEach(sec => {
     const el = document.getElementById(sec);
-    if (el) el.classList.add("hidden");
+    if (el) el.classList.add('hidden');
   });
-  const target = document.getElementById(id);
-  if (target) target.classList.remove("hidden");
-
-  if (id === 'crear-pagina-servicio') {
-    cargarDivisionesServicios();
-    const sel = document.getElementById("selectServicioPagina");
-    if (sel) sel.innerHTML = '<option value="">Seleccione un servicio</option>';
-  }
-};
+  const activa = document.getElementById(id);
+  if (activa) activa.classList.remove('hidden');
+}
 
 function slugify(text) {
   return text.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -81,10 +72,7 @@ function agregarDivision() {
   if (!nombre) return;
   const slug = slugify(nombre);
   const data = getDivisiones();
-  if (data.some(d => d.slug === slug)) {
-    alert("Ya existe esa división");
-    return;
-  }
+  if (data.some(d => d.slug === slug)) return alert("Ya existe esa división");
   data.push({ division: nombre, slug, servicios: [] });
   saveDivisiones(data);
   document.getElementById("divisionNombre").value = "";
@@ -96,10 +84,7 @@ function agregarServicio() {
   const slug = slugify(nombre);
   const data = getDivisiones();
   const division = data.find(d => d.slug === divisionSlug);
-  if (!division || division.servicios.some(s => s.slug === slug)) {
-    alert("El servicio ya existe o no se encontró la división.");
-    return;
-  }
+  if (!division || division.servicios.some(s => s.slug === slug)) return;
   division.servicios.push({ nombre, slug });
   saveDivisiones(data);
   document.getElementById("servicioNombre").value = "";
@@ -127,7 +112,7 @@ function renderVista() {
   data.forEach(div => {
     const divWrap = document.createElement("div");
     divWrap.className = "mb-4";
-    divWrap.innerHTML = \`<h4 class="font-semibold text-black cursor-pointer" data-slug="\${div.slug}" onclick="editarNombre(this, 'division')">\${div.division}</h4><ul class="ml-4 list-disc"></ul>\`;
+    divWrap.innerHTML = `<h4 class="font-semibold text-black cursor-pointer" data-slug="${div.slug}" onclick="editarNombre(this, 'division')">${div.division}</h4><ul class="ml-4 list-disc"></ul>`;
 
     const ul = divWrap.querySelector("ul");
 
@@ -135,34 +120,44 @@ function renderVista() {
       const li = document.createElement("li");
       li.className = "text-black cursor-pointer flex justify-between items-center";
       li.setAttribute("data-slug", serv.slug);
-      li.setAttribute("onclick", "editarNombre(this, 'servicio', '" + div.slug + "')");
+      li.setAttribute("onclick", `editarNombre(this, 'servicio', '${div.slug}')`);
       li.textContent = serv.nombre;
 
       const btn = document.createElement("button");
       btn.className = "text-red-600 ml-4 font-bold";
       btn.textContent = "✕";
       btn.onclick = (e) => {
-        e.stopPropagation();
+        e.stopPropagation(); // evitar que dispare editarNombre()
         eliminarServicio(serv.slug, div.slug);
       };
 
       li.appendChild(btn);
       ul.appendChild(li);
     });
-
+    
     divWrap.appendChild(ul);
     vista.appendChild(divWrap);
   });
 }
-
 function eliminarServicio(servSlug, divSlug) {
   const data = getDivisiones();
   const division = data.find(d => d.slug === divSlug);
   if (!division) return;
-  if (!confirm("¿Estás seguro de que deseas eliminar este servicio?")) return;
+  const confirmar = confirm("¿Estás seguro de que deseas eliminar este servicio?");
+  if (!confirmar) return;
   division.servicios = division.servicios.filter(s => s.slug !== servSlug);
   saveDivisiones(data);
 }
+
+// Exportar al scope global
+window.mostrarSeccion = mostrarSeccion;
+window.agregarDivision = agregarDivision;
+window.agregarServicio = agregarServicio;
+window.renderVista = renderVista;
+window.saveDivisiones = saveDivisiones;
+window.getDivisiones = getDivisiones;
+window.actualizarSelectorDivisiones = actualizarSelectorDivisiones;
+
 
 function editarNombre(element, tipo, divisionSlug = null) {
   const nuevo = prompt("Editar nombre:", element.textContent.trim());
@@ -186,13 +181,7 @@ function editarNombre(element, tipo, divisionSlug = null) {
 
   saveDivisiones(data);
 }
-
-// Exportar globalmente
-window.agregarDivision = agregarDivision;
-window.agregarServicio = agregarServicio;
-window.actualizarSelectorDivisiones = actualizarSelectorDivisiones;
-window.renderVista = renderVista;
-window.eliminarServicio = eliminarServicio;
-window.editarNombre = editarNombre;
-window.saveDivisiones = saveDivisiones;
-window.getDivisiones = getDivisiones;
+document.addEventListener("DOMContentLoaded", () => {
+  renderVista();
+  actualizarSelectorDivisiones();
+});
