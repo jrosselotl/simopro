@@ -1,42 +1,53 @@
 function cargarMenuDinamico() {
- 
   const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
+
+  // 🖥 MENÚ DE ESCRITORIO
   const menuDivisiones = document.getElementById("menu-divisiones");
-  if (!menuDivisiones) return;
+  if (menuDivisiones) {
+    menuDivisiones.innerHTML = "";
+    data.forEach(div => {
+      const li = document.createElement("li");
+      li.className = "relative group";
 
-  menuDivisiones.innerHTML = "";
+      const serviciosHTML = (div.servicios || []).map(s => `
+        <li>
+          <a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a>
+        </li>
+      `).join("");
 
-  data.forEach(div => {
-    const li = document.createElement("li");
-    li.className = "relative group";
+      li.innerHTML = `
+        <span class="cursor-pointer px-4 py-2 text-white hover:bg-gray-800 block">${div.division}</span>
+        ${serviciosHTML ? `
+          <ul class="absolute left-full top-0 ml-2 bg-black text-white rounded-md shadow-lg 
+              opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50 min-w-[200px]">
+            ${serviciosHTML}
+          </ul>` : ""}
+      `;
 
-    const tieneServicios = div.servicios && div.servicios.length > 0;
+      menuDivisiones.appendChild(li);
+    });
+  }
+ // 📱 MENÚ MÓVIL
+  const mobileDivisiones = document.getElementById("mobile-divisiones");
+  if (mobileDivisiones) {
+    mobileDivisiones.innerHTML = "";
+    data.forEach(div => {
+      const divContainer = document.createElement("div");
+      divContainer.className = "text-white";
 
-    li.innerHTML = `
-      <span class="cursor-pointer px-4 py-2 text-white hover:bg-gray-800 whitespace-nowrap block">
-        ${div.division}
-      </span>
-      ${
-        tieneServicios
-          ? `<ul class="absolute left-0 top-full mt-1 bg-black text-white rounded-md shadow-lg 
-                        opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                        transition-all duration-300 z-50 min-w-[200px]">
-              ${div.servicios.map(s => `
-                <li>
-                  <a href="servicios/${s.slug}.html" 
-                     class="block px-4 py-2 hover:bg-gray-800 hover:text-blue-400">${s.nombre}</a>
-                </li>
-              `).join("")}
-            </ul>`
-          : ""
-      }
-    `;
+      const serviciosHTML = (div.servicios || []).map(s => `
+        <a href="servicios/${s.slug}.html" class="block pl-4 py-1 text-sm text-gray-300 hover:text-blue-400">${s.nombre}</a>
+      `).join("");
 
-    menuDivisiones.appendChild(li);
-  });
+      divContainer.innerHTML = `
+        <div class="font-semibold py-2">${div.division}</div>
+        ${serviciosHTML}
+      `;
+
+      mobileDivisiones.appendChild(divContainer);
+    });
+  }
 }
-
-
 
 
 function toggleLangMenuMobile() {
