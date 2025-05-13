@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const sliderContainer = document.getElementById("slider-container");
   const addSlideBtn = document.getElementById("add-slide-btn");
@@ -6,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let slides = JSON.parse(localStorage.getItem("sliderData")) || [];
 
   function renderSlides() {
+    if (!sliderContainer) return;
     sliderContainer.innerHTML = "";
     slides.forEach((slide, index) => {
       const slideEl = document.createElement("div");
@@ -40,30 +40,29 @@ document.addEventListener("DOMContentLoaded", function () {
     renderSlides();
   });
 
-renderSlides(); 
+  renderSlides();
+  renderVista();
+  actualizarSelectorDivisiones();
+});
 
+// ========== FUNCIONES GENERALES ==========
 
-
-// ========== DIVISIONES Y SERVICIOS ==========
 window.mostrarSeccion = function (id) {
   const secciones = ['crear-division', 'crear-servicio', 'crear-pagina-servicio'];
   secciones.forEach(sec => {
-    const sectionElement = document.getElementById(sec);
-    if (sectionElement) {
-      sectionElement.classList.add('hidden');
-    }
+    const el = document.getElementById(sec);
+    if (el) el.classList.add("hidden");
   });
-  const targetSection = document.getElementById(id);
-  if (targetSection) {
-    targetSection.classList.remove('hidden');
-  }
+  const target = document.getElementById(id);
+  if (target) target.classList.remove("hidden");
 
-  // Al cargar sección de páginas, también carga divisiones
   if (id === 'crear-pagina-servicio') {
     cargarDivisionesServicios();
-    document.getElementById('selectServicioPagina').innerHTML = '<option value="">Seleccione un servicio</option>';
+    const sel = document.getElementById("selectServicioPagina");
+    if (sel) sel.innerHTML = '<option value="">Seleccione un servicio</option>';
   }
 };
+
 function slugify(text) {
   return text.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 }
@@ -83,7 +82,10 @@ function agregarDivision() {
   if (!nombre) return;
   const slug = slugify(nombre);
   const data = getDivisiones();
-  if (data.some(d => d.slug === slug)) return alert("Ya existe esa división");
+  if (data.some(d => d.slug === slug)) {
+    alert("Ya existe esa división");
+    return;
+  }
   data.push({ division: nombre, slug, servicios: [] });
   saveDivisiones(data);
   document.getElementById("divisionNombre").value = "";
@@ -95,7 +97,10 @@ function agregarServicio() {
   const slug = slugify(nombre);
   const data = getDivisiones();
   const division = data.find(d => d.slug === divisionSlug);
-  if (!division || division.servicios.some(s => s.slug === slug)) return;
+  if (!division || division.servicios.some(s => s.slug === slug)) {
+    alert("El servicio ya existe o no se encontró la división.");
+    return;
+  }
   division.servicios.push({ nombre, slug });
   saveDivisiones(data);
   document.getElementById("servicioNombre").value = "";
@@ -131,44 +136,34 @@ function renderVista() {
       const li = document.createElement("li");
       li.className = "text-black cursor-pointer flex justify-between items-center";
       li.setAttribute("data-slug", serv.slug);
-      li.setAttribute("onclick", `editarNombre(this, 'servicio', '${div.slug}')`);
+      li.setAttribute("onclick", \`editarNombre(this, 'servicio', '${div.slug}')\`);
       li.textContent = serv.nombre;
 
       const btn = document.createElement("button");
       btn.className = "text-red-600 ml-4 font-bold";
       btn.textContent = "✕";
       btn.onclick = (e) => {
-        e.stopPropagation(); // evitar que dispare editarNombre()
+        e.stopPropagation();
         eliminarServicio(serv.slug, div.slug);
       };
 
       li.appendChild(btn);
       ul.appendChild(li);
     });
-    
+
     divWrap.appendChild(ul);
     vista.appendChild(divWrap);
   });
 }
+
 function eliminarServicio(servSlug, divSlug) {
   const data = getDivisiones();
   const division = data.find(d => d.slug === divSlug);
   if (!division) return;
-  const confirmar = confirm("¿Estás seguro de que deseas eliminar este servicio?");
-  if (!confirmar) return;
+  if (!confirm("¿Estás seguro de que deseas eliminar este servicio?")) return;
   division.servicios = division.servicios.filter(s => s.slug !== servSlug);
   saveDivisiones(data);
 }
-
-// Exportar al scope global
-window.mostrarSeccion = mostrarSeccion;
-window.agregarDivision = agregarDivision;
-window.agregarServicio = agregarServicio;
-window.renderVista = renderVista;
-window.saveDivisiones = saveDivisiones;
-window.getDivisiones = getDivisiones;
-window.actualizarSelectorDivisiones = actualizarSelectorDivisiones;
-
 
 function editarNombre(element, tipo, divisionSlug = null) {
   const nuevo = prompt("Editar nombre:", element.textContent.trim());
@@ -192,7 +187,13 @@ function editarNombre(element, tipo, divisionSlug = null) {
 
   saveDivisiones(data);
 }
-document.addEventListener("DOMContentLoaded", () => {
-  renderVista();
-  actualizarSelectorDivisiones();
-});
+
+// Exportar globalmente
+window.agregarDivision = agregarDivision;
+window.agregarServicio = agregarServicio;
+window.actualizarSelectorDivisiones = actualizarSelectorDivisiones;
+window.renderVista = renderVista;
+window.eliminarServicio = eliminarServicio;
+window.editarNombre = editarNombre;
+window.saveDivisiones = saveDivisiones;
+window.getDivisiones = getDivisiones;
