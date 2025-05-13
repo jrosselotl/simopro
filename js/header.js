@@ -139,3 +139,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+document.addEventListener("DOMContentLoaded", () => {
+  const menuDivisionesWrapper = document.querySelector("#menu-divisiones").parentElement;
+  const menuDivisiones = document.getElementById("menu-divisiones");
+
+  if (menuDivisiones && menuDivisionesWrapper) {
+    menuDivisionesWrapper.addEventListener("mouseenter", () => {
+      menuDivisiones.classList.remove("invisible", "opacity-0");
+      menuDivisiones.classList.add("visible", "opacity-100");
+    });
+
+    menuDivisionesWrapper.addEventListener("mouseleave", () => {
+      menuDivisiones.classList.add("invisible", "opacity-0");
+      menuDivisiones.classList.remove("visible", "opacity-100");
+    });
+  }
+});
