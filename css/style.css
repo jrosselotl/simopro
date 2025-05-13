@@ -1,4 +1,8 @@
 /* Estilos generales */
+
+#menu-divisiones {
+    border: 1px solid red;
+  }
 body {
   font-family: 'Inter', sans-serif;
   background-color: #000;
