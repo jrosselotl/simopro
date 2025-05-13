@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", function () {
     slides.forEach((slide, index) => {
       const slideEl = document.createElement("div");
       slideEl.className = "p-4 mb-4 bg-white rounded shadow";
-      slideEl.innerHTML = `
+      slideEl.innerHTML = \`
         <label>Título:</label>
-        <input type="text" class="w-full p-2 border mb-2" value="${slide.title}" onchange="updateSlide(${index}, 'title', this.value)">
+        <input type="text" class="w-full p-2 border mb-2" value="\${slide.title}" onchange="updateSlide(\${index}, 'title', this.value)">
         <label>Texto:</label>
-        <input type="text" class="w-full p-2 border mb-2" value="${slide.text}" onchange="updateSlide(${index}, 'text', this.value)">
+        <input type="text" class="w-full p-2 border mb-2" value="\${slide.text}" onchange="updateSlide(\${index}, 'text', this.value)">
         <label>Imagen (URL):</label>
-        <input type="text" class="w-full p-2 border mb-2" value="${slide.image}" onchange="updateSlide(${index}, 'image', this.value)">
-        <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(${index})">Eliminar</button>
-      `;
+        <input type="text" class="w-full p-2 border mb-2" value="\${slide.image}" onchange="updateSlide(\${index}, 'image', this.value)">
+        <button class="bg-red-500 text-white px-3 py-1 rounded" onclick="deleteSlide(\${index})">Eliminar</button>
+      \`;
       sliderContainer.appendChild(slideEl);
     });
   }
@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ========== FUNCIONES GENERALES ==========
-
 window.mostrarSeccion = function (id) {
   const secciones = ['crear-division', 'crear-servicio', 'crear-pagina-servicio'];
   secciones.forEach(sec => {
@@ -128,7 +127,7 @@ function renderVista() {
   data.forEach(div => {
     const divWrap = document.createElement("div");
     divWrap.className = "mb-4";
-    divWrap.innerHTML = `<h4 class="font-semibold text-black cursor-pointer" data-slug="${div.slug}" onclick="editarNombre(this, 'division')">${div.division}</h4><ul class="ml-4 list-disc"></ul>`;
+    divWrap.innerHTML = \`<h4 class="font-semibold text-black cursor-pointer" data-slug="\${div.slug}" onclick="editarNombre(this, 'division')">\${div.division}</h4><ul class="ml-4 list-disc"></ul>\`;
 
     const ul = divWrap.querySelector("ul");
 
@@ -136,7 +135,7 @@ function renderVista() {
       const li = document.createElement("li");
       li.className = "text-black cursor-pointer flex justify-between items-center";
       li.setAttribute("data-slug", serv.slug);
-      li.setAttribute("onclick", \`editarNombre(this, 'servicio', '${div.slug}')\`);
+      li.setAttribute("onclick", "editarNombre(this, 'servicio', '" + div.slug + "')");
       li.textContent = serv.nombre;
 
       const btn = document.createElement("button");
