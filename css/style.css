@@ -1,9 +1,11 @@
 /* Estilos generales */
 
-#menu-divisiones {
-    border: 1px solid red;
+<style>
+  #menu-divisiones, .banner-test {
+    border: 2px dashed red;
+    z-index: 9999;
   }
-body {
+</style>
   font-family: 'Inter', sans-serif;
   background-color: #000;
   color: #fff;
