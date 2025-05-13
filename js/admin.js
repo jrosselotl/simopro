@@ -45,16 +45,25 @@ renderSlides();
 
 
 // ========== DIVISIONES Y SERVICIOS ==========
-function mostrarSeccion(id) {
-  const secciones = ['crear-division', 'crear-servicio'];
+window.mostrarSeccion = function (id) {
+  const secciones = ['crear-division', 'crear-servicio', 'crear-pagina-servicio'];
   secciones.forEach(sec => {
-    const el = document.getElementById(sec);
-    if (el) el.classList.add('hidden');
+    const sectionElement = document.getElementById(sec);
+    if (sectionElement) {
+      sectionElement.classList.add('hidden');
+    }
   });
-  const activa = document.getElementById(id);
-  if (activa) activa.classList.remove('hidden');
-}
+  const targetSection = document.getElementById(id);
+  if (targetSection) {
+    targetSection.classList.remove('hidden');
+  }
 
+  // Al cargar sección de páginas, también carga divisiones
+  if (id === 'crear-pagina-servicio') {
+    cargarDivisionesServicios();
+    document.getElementById('selectServicioPagina').innerHTML = '<option value="">Seleccione un servicio</option>';
+  }
+};
 function slugify(text) {
   return text.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 }
