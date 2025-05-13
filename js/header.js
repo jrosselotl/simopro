@@ -142,19 +142,31 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const trigger = document.getElementById("desktop-div-trigger");
   const menu = document.getElementById("menu-divisiones");
+  const container = document.getElementById("menu-desktop-divisiones");
 
-  if (trigger && menu) {
-    // Mostrar al pasar mouse
-    trigger.addEventListener("mouseenter", () => {
-      menu.classList.remove("invisible", "opacity-0");
-      menu.classList.add("visible", "opacity-100");
+  if (trigger && menu && container) {
+    let isOpen = false;
+
+    // Mostrar u ocultar con click
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation(); // evitar cierre inmediato
+      isOpen = !isOpen;
+      if (isOpen) {
+        menu.classList.remove("invisible", "opacity-0");
+        menu.classList.add("visible", "opacity-100");
+      } else {
+        menu.classList.add("invisible", "opacity-0");
+        menu.classList.remove("visible", "opacity-100");
+      }
     });
 
-    // Ocultar cuando el mouse sale del área completa
-    const container = document.getElementById("menu-desktop-divisiones");
-    container.addEventListener("mouseleave", () => {
-      menu.classList.add("invisible", "opacity-0");
-      menu.classList.remove("visible", "opacity-100");
+    // Cerrar si se hace click fuera
+    document.addEventListener("click", (e) => {
+      if (!container.contains(e.target)) {
+        menu.classList.add("invisible", "opacity-0");
+        menu.classList.remove("visible", "opacity-100");
+        isOpen = false;
+      }
     });
   }
 });
