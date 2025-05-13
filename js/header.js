@@ -1,4 +1,25 @@
 function cargarMenuDinamico() {
+  const mobileDivisiones = document.getElementById("mobile-divisiones");
+if (mobileDivisiones) {
+  mobileDivisiones.innerHTML = ""; // limpiar primero
+
+  data.forEach(div => {
+    const divContainer = document.createElement("div");
+    divContainer.className = "text-white";
+
+    const serviciosHTML = div.servicios.map(s => `
+      <a href="servicios/${s.slug}.html" class="block pl-4 py-1 text-sm text-gray-300 hover:text-blue-400">${s.nombre}</a>
+    `).join("");
+
+    divContainer.innerHTML = `
+      <div class="font-semibold py-2">${div.division}</div>
+      ${serviciosHTML}
+    `;
+
+    mobileDivisiones.appendChild(divContainer);
+  });
+}
+
   const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
   const menuDivisiones = document.getElementById("menu-divisiones");
   if (!menuDivisiones) return;
