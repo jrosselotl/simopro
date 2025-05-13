@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => console.error("Error al cargar header:", error));
 });
-<script>
+
   document.addEventListener("DOMContentLoaded", () => {
     const trigger = document.getElementById("desktop-div-trigger");
     const menu = document.getElementById("menu-divisiones");
@@ -139,4 +139,3 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
-</script>
