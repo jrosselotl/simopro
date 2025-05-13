@@ -147,27 +147,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (trigger && menu && container) {
     let isOpen = false;
 
-    // Mostrar u ocultar con click
+    // Mostrar al hacer clic
     trigger.addEventListener("click", (e) => {
-      e.stopPropagation(); // evitar cierre inmediato
+      e.stopPropagation(); // evita cierre inmediato
       isOpen = !isOpen;
-      if (isOpen) {
-        menu.classList.remove("invisible", "opacity-0");
-        menu.classList.add("visible", "opacity-100");
-      } else {
-        menu.classList.add("invisible", "opacity-0");
-        menu.classList.remove("visible", "opacity-100");
-      }
+      menu.classList.toggle("invisible", !isOpen);
+      menu.classList.toggle("opacity-0", !isOpen);
+      menu.classList.toggle("visible", isOpen);
+      menu.classList.toggle("opacity-100", isOpen);
     });
 
-    // Cerrar si se hace click fuera
+    // Cerrar al hacer clic fuera
     document.addEventListener("click", (e) => {
       if (!container.contains(e.target)) {
+        isOpen = false;
         menu.classList.add("invisible", "opacity-0");
         menu.classList.remove("visible", "opacity-100");
-        isOpen = false;
       }
     });
   }
 });
-
