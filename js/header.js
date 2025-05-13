@@ -1,3 +1,4 @@
+
 function cargarMenuDinamico() {
   const data = JSON.parse(localStorage.getItem("simopro_servicios")) || [];
 
@@ -16,10 +17,10 @@ function cargarMenuDinamico() {
       `).join("");
 
       li.innerHTML = `
-        <span class="cursor-pointer px-4 py-2 text-white hover:bg-gray-800 block">${div.division}</span>
+        <span class="cursor-pointer px-4 py-2 text-white hover:bg-gray-800 whitespace-nowrap block">${div.division}</span>
         ${serviciosHTML ? `
           <ul class="absolute left-full top-0 ml-2 bg-black text-white rounded-md shadow-lg 
-              opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50 min-w-[200px]">
+              opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 min-w-[200px]">
             ${serviciosHTML}
           </ul>` : ""}
       `;
@@ -27,28 +28,30 @@ function cargarMenuDinamico() {
       menuDivisiones.appendChild(li);
     });
   }
- // 📱 MENÚ MÓVIL
+
+  // 📱 MENÚ MÓVIL (Acordeón clic por división)
   const mobileDivisiones = document.getElementById("mobile-divisiones");
   if (mobileDivisiones) {
     mobileDivisiones.innerHTML = "";
-    data.forEach(div => {
-      const divContainer = document.createElement("div");
-      divContainer.className = "text-white";
+    data.forEach((div, index) => {
+      const container = document.createElement("div");
+      container.className = "text-white";
 
-      const serviciosHTML = (div.servicios || []).map(s => `
-        <a href="servicios/${s.slug}.html" class="block pl-4 py-1 text-sm text-gray-300 hover:text-blue-400">${s.nombre}</a>
-      `).join("");
-
-      divContainer.innerHTML = `
-        <div class="font-semibold py-2">${div.division}</div>
-        ${serviciosHTML}
+      const idServicios = `mobile-sub-${index}`;
+      container.innerHTML = `
+        <button class="w-full text-left font-semibold py-2" onclick="document.getElementById('${idServicios}').classList.toggle('hidden')">
+          ${div.division}
+        </button>
+        <div id="${idServicios}" class="hidden pl-4">
+          ${(div.servicios || []).map(s => `
+            <a href="servicios/${s.slug}.html" class="block py-1 text-sm text-gray-300 hover:text-blue-400">${s.nombre}</a>
+          `).join("")}
+        </div>
       `;
-
-      mobileDivisiones.appendChild(divContainer);
+      mobileDivisiones.appendChild(container);
     });
   }
 }
-
 
 function toggleLangMenuMobile() {
   const menu = document.getElementById("lang-menu-mobile");
