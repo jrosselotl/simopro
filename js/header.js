@@ -9,28 +9,32 @@ function cargarMenuDinamico() {
     const li = document.createElement("li");
     li.className = "relative group";
 
-    const hasServicios = div.servicios && div.servicios.length > 0;
+    const tieneServicios = div.servicios && div.servicios.length > 0;
 
     li.innerHTML = `
-      <div class="cursor-pointer px-4 py-2 hover:bg-gray-800 text-white whitespace-nowrap group">
+      <span class="cursor-pointer px-4 py-2 text-white hover:bg-gray-800 whitespace-nowrap block">
         ${div.division}
-        ${
-          hasServicios
-            ? `<ul class="absolute left-0 top-full mt-1 bg-black text-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 min-w-[200px]">
-                ${div.servicios.map(s => `
-                  <li>
-                    <a href="servicios/${s.slug}.html" class="block px-4 py-2 hover:bg-gray-800 text-white hover:text-blue-400">${s.nombre}</a>
-                  </li>
-                `).join("")}
-              </ul>`
-            : ""
-        }
-      </div>
+      </span>
+      ${
+        tieneServicios
+          ? `<ul class="absolute left-0 top-full mt-1 bg-black text-white rounded-md shadow-lg 
+                        opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                        transition-all duration-300 z-50 min-w-[200px]">
+              ${div.servicios.map(s => `
+                <li>
+                  <a href="servicios/${s.slug}.html" 
+                     class="block px-4 py-2 hover:bg-gray-800 hover:text-blue-400">${s.nombre}</a>
+                </li>
+              `).join("")}
+            </ul>`
+          : ""
+      }
     `;
 
     menuDivisiones.appendChild(li);
   });
 }
+
 
 
 
