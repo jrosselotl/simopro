@@ -40,9 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
     renderSlides();
   });
 
- document.addEventListener('DOMContentLoaded', () => {
-  renderSlides();
-});
+renderSlides(); 
+
 
 
 // ========== DIVISIONES Y SERVICIOS ==========
